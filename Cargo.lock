@@ -11,7 +11,7 @@ name = "dfs_and_bfs"
 version = "0.1.0"
 
 [[package]]
-name = "dounle_ptr"
+name = "double_ptr"
 version = "0.1.0"
 
 [[package]]
@@ -21,6 +21,9 @@ version = "0.1.0"
 [[package]]
 name = "leetcode"
 version = "0.1.0"
+dependencies = [
+ "double_ptr",
+]
 
 [[package]]
 name = "str_demo"

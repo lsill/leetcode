@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "dounle_ptr"
+name = "double_ptr"
 version = "0.1.0"

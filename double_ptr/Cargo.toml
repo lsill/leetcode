@@ -1,5 +1,5 @@
 [package]
-name = "dounle_ptr"
+name = "double_ptr"
 version = "0.1.0"
 edition = "2021"
 
