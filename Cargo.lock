@@ -3,5 +3,25 @@
 version = 3
 
 [[package]]
+name = "cache"
+version = "0.1.0"
+
+[[package]]
+name = "dfs_and_bfs"
+version = "0.1.0"
+
+[[package]]
+name = "dounle_ptr"
+version = "0.1.0"
+
+[[package]]
+name = "graphics_demo"
+version = "0.1.0"
+
+[[package]]
 name = "leetcode"
+version = "0.1.0"
+
+[[package]]
+name = "str_demo"
 version = "0.1.0"
