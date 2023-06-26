@@ -7,4 +7,6 @@ members = [
     "double_ptr",
     "dfs_and_bfs",
     "cache",
+    "arr_demo",
+    "math_demo"
 ]
