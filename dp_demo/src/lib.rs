@@ -1,4 +1,6 @@
-mod cache_code;
+//! 动态规划
+
+mod simple_dp;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right
@@ -7,9 +9,9 @@ pub fn add(left: usize, right: usize) -> usize {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use simple_dp::*;
     #[test]
     fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+        maximum_sum_bc(vec![1,-2,0,3]);
     }
 }

@@ -8,5 +8,6 @@ members = [
     "dfs_and_bfs",
     "cache",
     "arr_demo",
-    "math_demo"
+    "math_demo",
+    "dp_demo"
 ]

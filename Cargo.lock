@@ -19,6 +19,10 @@ name = "double_ptr"
 version = "0.1.0"
 
 [[package]]
+name = "dp_demo"
+version = "0.1.0"
+
+[[package]]
 name = "graphics_demo"
 version = "0.1.0"
 
