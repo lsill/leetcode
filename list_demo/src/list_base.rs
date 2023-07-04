@@ -42,3 +42,79 @@ pub fn carried(l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>, mut carry: 
     }
 }
 
+/// 445. 两数相加 II
+/// 给你两个 非空 链表来代表两个非负整数。数字最高位位于链表开始位置。它们的每个节点只存储一位数字。将这两数相加会返回一个新的链表。
+/// 示例1
+/// 输入：l1 = [7,2,4,3], l2 = [5,6,4]
+/// 输出：[7,8,0,7]
+
+// lc 不用递归的做法
+pub fn add_two_numbers_plus(l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+    let mut a = Vec::with_capacity(128);
+    let mut b = Vec::with_capacity(128);
+    let mut x = l1;
+    while let Some(t) = x {
+        x = t.next;
+        a.push(t.val);
+    }
+    let mut x = l2;
+    while let Some(t) = x {
+        x = t.next;
+        b.push(t.val);
+    }
+    let mut a = a.into_iter().rev();
+    let mut b = b.into_iter().rev();
+    let mut ans = None;
+    let mut cur = 0;
+    let mut done_a = false;
+    let mut done_b = false;
+    loop {
+        let x = if let Some(t) = a.next() {t}
+        else {done_a = true; 0};
+        let y = if let Some(t) = b.next() {t}
+        else {done_b = true; 0};
+        cur += x + y;
+        let t = cur % 10;
+        cur /= 10;
+        if done_a && done_b && cur + t == 0 {break}
+        ans = Some(Box::new(ListNode{
+            val: t, next: ans
+        }));
+    }
+    if ans.is_none() {
+        Some(Box::new(ListNode::new(0)))
+    } else {ans}
+}
+
+pub fn reverse_list(head :Option<Box<ListNode>>)->Option<Box<ListNode>> {
+    let mut pre = None;
+    let mut head = head;
+    while let Some(mut node) = head {
+        head = node.next.take();
+        node.next= pre;
+        pre = Some(node);
+    }
+    pre
+}
+
+pub fn reverse_list_mut(mut head : Option<Box<ListNode>>)->Option<Box<ListNode>> {
+    let mut res = None;
+    while let Some(mut node) = head {
+        head = node.next.take();
+        node.next = res;
+        res = Some(node);
+    }
+    res
+}
+
+pub fn reverse_list_no(head: &mut Option<Box<ListNode>>) {
+    let mut prev = None;
+    let mut current:Option<Box<ListNode>> = head.take();
+    while let Some(mut node) = current {
+        let next =node.next.take();
+        node.next = prev;
+        prev = Some(node);
+        current = next;
+    }
+    *head = prev
+}

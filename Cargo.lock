@@ -42,5 +42,9 @@ name = "math_demo"
 version = "0.1.0"
 
 [[package]]
+name = "matrix_demo"
+version = "0.1.0"
+
+[[package]]
 name = "str_demo"
 version = "0.1.0"

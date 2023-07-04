@@ -10,5 +10,6 @@ members = [
     "arr_demo",
     "math_demo",
     "dp_demo",
-    "list_demo"
+    "list_demo",
+    "matrix_demo"
 ]
