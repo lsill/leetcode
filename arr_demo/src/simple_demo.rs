@@ -111,3 +111,26 @@ pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
             }
         }).unwrap()
 }
+
+/// 2178. 拆分成最多数目的正偶数之和
+/// 给你一个整数finalSum。请你将它拆分成若干个互不相同 的正偶数之和，且拆分出来的正偶数数目最多。
+/// 比方说，给你finalSum = 12，那么这些拆分是符合要求 的（互不相同的正偶数且和为finalSum）
+/// ：(2 + 10)，(2 + 4 + 6)和(4 + 8)。它们中，(2 + 4 + 6)包含最多数目的整数。
+/// 注意finalSum不能拆分成(2 + 2 + 4 + 4)，因为拆分出来的整数必须互不相同。
+/// 请你返回一个整数数组，表示将整数拆分成 最多 数目的正偶数数组。
+/// 如果没有办法将finalSum进行拆分，请你返回一个空数组。你可以按 任意顺序返回这些整数。
+pub fn maximum_even_split(final_sum: i64) -> Vec<i64> {
+    if final_sum & 1 == 1 {
+        return vec![]
+    }
+    let mut tmp = final_sum;
+    let mut ans = vec![];
+    let mut t = 2;
+    while t * 2 < tmp {
+        ans.push(t);
+        tmp -= t;
+        t += 2;
+    }
+    ans.push(tmp);
+    ans
+}
