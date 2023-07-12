@@ -50,5 +50,9 @@ name = "send_point"
 version = "0.1.0"
 
 [[package]]
+name = "simple_demo"
+version = "0.1.0"
+
+[[package]]
 name = "str_demo"
 version = "0.1.0"

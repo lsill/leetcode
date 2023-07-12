@@ -12,5 +12,6 @@ members = [
     "dp_demo",
     "list_demo",
     "matrix_demo",
-    "send_point"
+    "send_point",
+    "simple_demo"
 ]
