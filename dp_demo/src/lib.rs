@@ -1,6 +1,7 @@
 //! 动态规划
 
 mod simple_dp;
+mod classical_demo;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right

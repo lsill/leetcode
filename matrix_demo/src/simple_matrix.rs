@@ -28,7 +28,7 @@ pub fn matrix_sum_lc(mut nums: Vec<Vec<i32>>) -> i32 {
     for list in nums.iter_mut() {
         list.sort();
     }
-    let mut res :i32 = 0;
+    let mut res: i32 = 0;
     let (n, m) = (nums.len(), nums[0].len());
     for col in 0..m {
         res += nums.iter().map(|x| x[col]).max().unwrap();
@@ -40,5 +40,8 @@ pub fn matrix_sum_lc_1(mut nums: Vec<Vec<i32>>) -> i32 {
     for row in nums.iter_mut() {
         row.sort();
     }
-    (0..nums[0].len()).fold(0, |mut a,c|{a+=nums.iter().map(|x|x[c]).max().unwrap();a})
+    (0..nums[0].len()).fold(0, |mut a, c| {
+        a += nums.iter().map(|x| x[c]).max().unwrap();
+        a
+    })
 }
