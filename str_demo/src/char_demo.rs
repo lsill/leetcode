@@ -1,3 +1,5 @@
+use std::io::Bytes;
+
 /// 2496. 数组中字符串的最大值
 /// 一个由字母和数字组成的字符串的 值定义如下：
 ///
@@ -81,4 +83,57 @@ pub fn is_circular_sentence_0(sentence: String) -> bool {
 pub fn is_circular_sentence_1(sentence: String) -> bool {
    let (N, s) = (sentence.len(), sentence.as_bytes());
     s[0] == s[N-1] && (0..N).filter(|&i| s[i] == b' ').all(|i| s[i-1] == s[i+1])
+}
+
+/// 415. 字符串相加
+/// 给定两个字符串形式的非负整数num1 和num2，计算它们的和并同样以字符串形式返回。
+/// 你不能使用任何內建的用于处理大整数的库（比如 BigInteger），也不能直接将输入的字符串转换为整数形式。
+
+// lc 抄
+pub fn add_strings(num1: String, num2: String) -> String {
+    let mut res = Vec::new();
+    let mut i = num1.len();
+    let mut j = num2.len();
+    let mut carry = 0;
+
+    while(i > 0 || j > 0){
+        let n1 = { if i > 0 {num1.as_bytes()[i-1] - '0' as u8} else { 0 }  };
+        let n2 = { if j > 0 {num2.as_bytes()[j-1] - '0' as u8} else { 0 }  };
+
+        let tmp = n1 + n2 + carry;
+        carry = tmp / 10;
+        res.push(tmp % 10 + '0' as u8);
+        if i > 0 {i -= 1;}
+        if j > 0 {j -= 1;}
+    }
+    if carry == 1 {
+        res.push('1' as u8);
+    }
+    res.reverse();
+    String::from_utf8(res).unwrap()
+}
+
+// lc best
+pub fn add_strings_1(num1: String, num2: String) -> String {
+    let mut number1 = num1.as_bytes().iter().rev();
+    let mut number2 = num2.as_bytes().iter().rev();
+
+    let mut result = String::new();
+
+    let max_len = std::cmp::max(number1.len(), number2.len());
+
+    let mut over_10 = false;
+    for _ in 0..max_len {
+        let number1 = *number1.next().unwrap_or(&('0' as u8)) - ('0' as u8);
+        let number2 = *number2.next().unwrap_or(&('0' as u8)) - ('0' as u8);
+
+        let sum = number1 + number2 + if over_10 { 1 } else { 0 };
+        over_10 = sum >= 10;
+        result.insert(0, ((sum % 10) + '0' as u8) as char)
+    }
+
+    if over_10 {
+        result.insert(0, '1');
+    }
+    result
 }
