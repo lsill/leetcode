@@ -146,5 +146,8 @@ A(n)+C(n)=n.
 特殊值求通用解牛逼奥
 
 
-
+### 7. 广义递归
+![](https://github.com/lsill/leetcode/blob/main/dfs_and_bfs/math/picture/j0.jpg)
+![](https://github.com/lsill/leetcode/blob/main/dfs_and_bfs/math/picture/j1.jpg)
+![](https://github.com/lsill/leetcode/blob/main/dfs_and_bfs/math/picture/j2.jpg)
 
