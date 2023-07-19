@@ -1,4 +1,5 @@
 mod simple_matrix;
+mod matrix_dm;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right
