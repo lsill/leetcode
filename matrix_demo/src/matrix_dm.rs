@@ -25,11 +25,13 @@ pub fn robot_sim(commands: Vec<i32>, obstacles: Vec<Vec<i32>>) -> i32 {
     let mut dir = (0,1);
     let mut max_dis = 0;
     for com in commands {
+        // two-dimensional rotation here is nice
         if com == -1 {
             dir = (dir.1, -dir.0);
         }else if com == -2 {
             dir = (-dir.1, dir.0);
         } else {
+            // i didn't expect it to be simulated step by step.
             for _ in 0..com {
                 if !ob_set.contains(&(x+dir.0, y + dir.1)) {
                     x += dir.0;
