@@ -75,15 +75,15 @@ pub fn reconstruct_matrix_try(upper: i32, lower: i32, colsum: Vec<i32>) -> Vec<V
     let mut diff = upper - lower;
     for i in 0..n {
         if colsum[i] == 2 {
-            ans[0][i] = 1;
-            ans[1][i] = 1;
+            res[0][i] = 1;
+            res[1][i] = 1;
         } else if colsum[i] == 1 {
             if diff < 0 {
                 diff += 1;
-                ans[1][i] = 1;
+                res[1][i] = 1;
             } else {
                 diff -= 1;
-                ans[0][i] = 1;
+                res[0][i] = 1;
             }
         }
     }
