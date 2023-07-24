@@ -137,3 +137,28 @@ pub fn add_strings_1(num1: String, num2: String) -> String {
     }
     result
 }
+
+
+/// 771. 宝石与石头
+/// 给你一个字符串 jewels代表石头中宝石的类型，另有一个字符串 stones 代表你拥有的石头。
+/// stones中每个字符代表了一种你拥有的石头的类型，你想知道你拥有的石头中有多少是宝石。
+/// 字母区分大小写，因此 "a" 和 "A" 是不同类型的石头。
+
+// lc写法1
+pub fn num_jewels_in_stones(jewels: String, stones: String) -> i32 {
+    stones
+        .matches(|c| jewels.contains(c))
+        .count() as i32
+}
+
+// lc写法2
+pub fn num_jewels_in_stones_0(jewels: String, stones: String) -> i32 {
+    stones.chars().into_iter().filter(|&c| jewels.contains(c)).count() as i32
+}
+
+// lc写法3
+pub fn num_jewels_in_stones_1(jewels: String, stones: String) -> i32 {
+    let mut a = [0;128];
+    stones.bytes().for_each(|x| a[x as usize] += 1);
+    jewels.bytes().fold(0, |s,x| s + a[x as usize])
+}

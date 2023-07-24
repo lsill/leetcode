@@ -15,6 +15,6 @@ mod tests {
     }
     #[test]
     fn test1() {
-        is_circular_sentence_0("leetcode exercises sound delightful".to_string());
+        num_jewels_in_stones("aA".to_string(), "aAAbbbb".to_string());
     }
 }
