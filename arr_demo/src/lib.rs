@@ -13,6 +13,6 @@ mod tests {
 
     #[test]
     fn it_works() {
-        max_subarray_sum_circular(vec![1,-2,3,-2]);
+        halve_array(vec![58,23]);
     }
 }
