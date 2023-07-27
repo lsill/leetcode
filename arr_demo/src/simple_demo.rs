@@ -1,3 +1,5 @@
+use std::os::unix::raw::gid_t;
+
 /// 1253. 重构 2 行二进制矩阵
 /// 给你一个**2**行 **n** 列的**二进制**数组：
 /// 矩阵是一个二进制矩阵，这意味着矩阵中的每个元素不是0就是1。
@@ -133,4 +135,53 @@ pub fn maximum_even_split(final_sum: i64) -> Vec<i64> {
     }
     ans.push(tmp);
     ans
+}
+
+
+/// 2500. 删除每行中的最大值
+/// 给你一个 m x n 大小的矩阵 grid ，由若干正整数组成。
+/// 执行下述操作，直到 grid 变为空矩阵：
+/// 从每一行删除值最大的元素。如果存在多个这样的值，删除其中任何一个。
+/// 将删除元素中的最大值与答案相加。
+/// 注意 每执行一次操作，矩阵中列的数据就会减 1 。
+/// 返回执行上述操作后的答案。
+pub fn delete_greatest_value(grid: Vec<Vec<i32>>) -> i32 {
+    let mut grid = grid;
+    for i in 0..grid.len() {
+        grid[i].sort();
+    }
+
+    let mut ans = 0;
+    for j in 0..grid[0].len() {
+        let mut mx = 0;
+
+        for i in 0..grid.len() {
+            if grid[i][j] > mx {
+                mx = grid[i][j];
+            }
+        }
+
+        ans += mx;
+    }
+    ans
+}
+
+pub fn delete_greatest_value_0(mut grid: Vec<Vec<i32>>) -> i32 {
+    let mut res=0;
+    for i in 0..grid.len() {
+        grid[i].sort_unstable();
+
+    }
+    let mut n=grid[0].len();
+
+    for j in (0..n).rev() {
+        let mut v=vec![];
+        for i in 0..grid.len() {
+            v.push(grid[i][j]);
+
+        }
+        res+=v.iter().max().unwrap();
+
+    }
+    res
 }

@@ -13,6 +13,6 @@ mod tests {
 
     #[test]
     fn it_works() {
-        halve_array(vec![58,23]);
+        delete_greatest_value(vec![vec![1,2,4],vec![3,3,1]]);
     }
 }
