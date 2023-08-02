@@ -13,6 +13,6 @@ mod tests {
 
     #[test]
     fn it_works() {
-        delete_greatest_value(vec![vec![1,2,4],vec![3,3,1]]);
+        flipgame(vec![1,1], vec![1,2]);
     }
 }
