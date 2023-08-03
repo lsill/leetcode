@@ -25,13 +25,12 @@ pub fn maximum_value(strs: Vec<String>) -> i32 {
                 if ans < val {
                     ans = val;
                 }
-            },
-            Err(_)=>{
+            }
+            Err(_) => {
                 if ans < str.len() {
                     ans = str.len();
                 }
             }
-
         }
     }
     ans as i32
@@ -70,8 +69,8 @@ pub fn maximum_value_lc(strs: Vec<String>) -> i32 {
 
 // lc比较优秀做法
 pub fn is_circular_sentence_0(sentence: String) -> bool {
-    sentence.chars().enumerate().all(|(i,c)| {
-        if c == ' ' && sentence.chars().nth(i+1) != sentence.chars().nth(i-1) {
+    sentence.chars().enumerate().all(|(i, c)| {
+        if c == ' ' && sentence.chars().nth(i + 1) != sentence.chars().nth(i - 1) {
             false
         } else {
             true
@@ -81,8 +80,11 @@ pub fn is_circular_sentence_0(sentence: String) -> bool {
 
 // lc 非常秀的做法
 pub fn is_circular_sentence_1(sentence: String) -> bool {
-   let (N, s) = (sentence.len(), sentence.as_bytes());
-    s[0] == s[N-1] && (0..N).filter(|&i| s[i] == b' ').all(|i| s[i-1] == s[i+1])
+    let (N, s) = (sentence.len(), sentence.as_bytes());
+    s[0] == s[N - 1]
+        && (0..N)
+            .filter(|&i| s[i] == b' ')
+            .all(|i| s[i - 1] == s[i + 1])
 }
 
 /// 415. 字符串相加
@@ -96,15 +98,31 @@ pub fn add_strings(num1: String, num2: String) -> String {
     let mut j = num2.len();
     let mut carry = 0;
 
-    while(i > 0 || j > 0){
-        let n1 = { if i > 0 {num1.as_bytes()[i-1] - '0' as u8} else { 0 }  };
-        let n2 = { if j > 0 {num2.as_bytes()[j-1] - '0' as u8} else { 0 }  };
+    while (i > 0 || j > 0) {
+        let n1 = {
+            if i > 0 {
+                num1.as_bytes()[i - 1] - '0' as u8
+            } else {
+                0
+            }
+        };
+        let n2 = {
+            if j > 0 {
+                num2.as_bytes()[j - 1] - '0' as u8
+            } else {
+                0
+            }
+        };
 
         let tmp = n1 + n2 + carry;
         carry = tmp / 10;
         res.push(tmp % 10 + '0' as u8);
-        if i > 0 {i -= 1;}
-        if j > 0 {j -= 1;}
+        if i > 0 {
+            i -= 1;
+        }
+        if j > 0 {
+            j -= 1;
+        }
     }
     if carry == 1 {
         res.push('1' as u8);
@@ -138,7 +156,6 @@ pub fn add_strings_1(num1: String, num2: String) -> String {
     result
 }
 
-
 /// 771. 宝石与石头
 /// 给你一个字符串 jewels代表石头中宝石的类型，另有一个字符串 stones 代表你拥有的石头。
 /// stones中每个字符代表了一种你拥有的石头的类型，你想知道你拥有的石头中有多少是宝石。
@@ -146,19 +163,117 @@ pub fn add_strings_1(num1: String, num2: String) -> String {
 
 // lc写法1
 pub fn num_jewels_in_stones(jewels: String, stones: String) -> i32 {
-    stones
-        .matches(|c| jewels.contains(c))
-        .count() as i32
+    stones.matches(|c| jewels.contains(c)).count() as i32
 }
 
 // lc写法2
 pub fn num_jewels_in_stones_0(jewels: String, stones: String) -> i32 {
-    stones.chars().into_iter().filter(|&c| jewels.contains(c)).count() as i32
+    stones
+        .chars()
+        .into_iter()
+        .filter(|&c| jewels.contains(c))
+        .count() as i32
 }
 
 // lc写法3
 pub fn num_jewels_in_stones_1(jewels: String, stones: String) -> i32 {
-    let mut a = [0;128];
+    let mut a = [0; 128];
     stones.bytes().for_each(|x| a[x as usize] += 1);
-    jewels.bytes().fold(0, |s,x| s + a[x as usize])
+    jewels.bytes().fold(0, |s, x| s + a[x as usize])
+}
+
+/// 722. 删除注释
+/// 给一个 C++ 程序，删除程序中的注释。这个程序source是一个数组，其中source[i]表示第 i 行源码。 这表示每行源码由 '\n' 分隔。
+/// 在 C++ 中有两种注释风格，行内注释和块注释。
+/// 字符串// 表示行注释，表示//和其右侧的其余字符应该被忽略。
+/// 字符串/* 表示一个块注释，它表示直到下一个（非重叠）出现的*/之间的所有字符都应该被忽略。（阅读顺序为从左到右）非重叠是指，字符串/*/并没有结束块注释，因为注释的结尾与开头相重叠。
+/// 第一个有效注释优先于其他注释。
+/// 如果字符串//出现在块注释中会被忽略。
+/// 同样，如果字符串 /*出现在行或块注释中也会被忽略。
+/// 如果一行在删除注释之后变为空字符串，那么不要输出该行。即，答案列表中的每个字符串都是非空的。
+/// 样例中没有控制字符，单引号或双引号字符。
+/// 比如，source = "string s = "/* Not a comment. */";" 不会出现在测试样例里。
+/// 此外，没有其他内容（如定义或宏）会干扰注释。
+/// 我们保证每一个块注释最终都会被闭合， 所以在行或块注释之外的/*总是开始新的注释。
+/// 最后，隐式换行符可以通过块注释删除。 有关详细信息，请参阅下面的示例。
+/// 从源代码中删除注释后，需要以相同的格式返回源代码。
+
+// lc 题解
+
+pub fn remove_comments(source: Vec<String>) -> Vec<String> {
+    let mut ans = vec![];
+    let mut is_comment = false;
+    let mut line = String::new();
+
+    for s in source {
+        let mut it = s.chars().peekable();
+
+        while let Some(c) = it.next() {
+            if is_comment {
+                match (c, it.peek()) {
+                    ('*', Some(&'/')) => {
+                        it.next();
+                        is_comment = false;
+                    }
+                    _ => {}
+                }
+            } else {
+                match (c, it.peek()) {
+                    ('/', Some(&'/')) => {
+                        break;
+                    }
+                    ('/', Some(&'*')) => {
+                        it.next();
+                        is_comment = true;
+                        continue;
+                    }
+                    _ => {}
+                }
+
+                line.push(c);
+            }
+        }
+
+        if !is_comment && !line.is_empty() {
+            ans.push(line);
+            line = String::new();
+        }
+    }
+
+    ans
+}
+
+// lc 内存比较好的解
+pub fn remove_comments_1(source: Vec<String>) -> Vec<String> {
+    let mut res = Vec::new();
+    let mut t = Vec::new();
+    let mut block = false;
+    for s in source {
+        let mut _s = s.as_bytes().iter().peekable();
+        while let Some(&c) = _s.next() {
+            if block {
+                if c == b'*' && _s.peek() == Some(&&b'/') {
+                    _s.next();
+                    block = false;
+                }
+            } else {
+                if c == b'/' {
+                    let peek = _s.peek();
+                    if peek == Some(&&b'/') {
+                        break;
+                    } else if peek == Some(&&b'*') {
+                        _s.next();
+                        block = true;
+                        continue;
+                    }
+                }
+                t.push(c);
+            }
+        }
+        if !block && !t.is_empty() {
+            res.push(unsafe { String::from_utf8_unchecked(t.clone()) });
+            t.clear();
+        }
+    }
+    res
 }
