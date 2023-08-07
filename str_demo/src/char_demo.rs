@@ -277,3 +277,28 @@ pub fn remove_comments_1(source: Vec<String>) -> Vec<String> {
     }
     res
 }
+
+/// 344. 反转字符串
+/// 编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 s 的形式给出。
+/// 不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。
+
+// lc自己做的
+pub fn reverse_string(s: &mut Vec<char>) {
+    let n = s.len();
+    let mid = n / 2;
+    for i in 0..mid {
+        let tmp = s[i];
+        s[i] = s[n - i -1];
+        s[n-i-1] = tmp;
+    }
+}
+// LC 比较好的写法
+pub fn reverse_string_0(s: &mut Vec<char>) {
+    // let (mut l, mut r) = (0, s.len() - 1);
+    // while l < r {
+    //     s.swap(l, r);
+    //     l += 1;
+    //     r -= 1;
+    // }
+    s.reverse();
+}

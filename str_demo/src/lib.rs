@@ -15,6 +15,7 @@ mod tests {
     }
     #[test]
     fn test1() {
-        num_jewels_in_stones("aA".to_string(), "aAAbbbb".to_string());
+        let mut s:Vec<char> = vec!['h','e','l','l','o'];
+        reverse_string(&mut s);
     }
 }
