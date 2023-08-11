@@ -12,7 +12,7 @@ mod tests {
 
     #[test]
     fn it_works() {
-        let n = matrix_sum(vec![vec![7,2,1],vec![6,4,2],vec![6,5,3],vec![3,2,1]]);
+        let n = diagonal_sum(vec![vec![1,2,3],vec![4,5,6],vec![7,8,9]]);
         println!("{}",n);
     }
 }

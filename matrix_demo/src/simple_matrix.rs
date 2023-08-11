@@ -45,3 +45,29 @@ pub fn matrix_sum_lc_1(mut nums: Vec<Vec<i32>>) -> i32 {
         a
     })
 }
+
+/// 1572. 矩阵对角线元素的和
+/// 给你一个正方形矩阵 mat，请你返回矩阵对角线元素的和。
+/// 请你返回在矩阵主对角线上的元素和副对角线上且不在主对角线上元素的和。
+
+// lc 自己做的
+pub fn diagonal_sum(mat: Vec<Vec<i32>>) -> i32 {
+    let n = mat.len();
+    let mut sum = 0;
+    for i in 0..n {
+        sum += mat[i][i];
+        if i != n - i - 1 {
+            sum += mat[i][n - i - 1];
+        }
+    }
+    sum
+}
+
+// lc 符合rust的写法
+pub fn diagonal_sum_1(mat: Vec<Vec<i32>>) -> i32 {
+    let n = mat.len();
+    mat.iter()
+        .enumerate()
+        .map(|(i, r)| r[i] + if n - 1 - i != i { r[n - 1 - i] } else { 0 })
+        .sum()
+}
