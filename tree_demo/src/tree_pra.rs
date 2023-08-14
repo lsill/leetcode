@@ -1,3 +1,46 @@
-use crate::tree_base;
 use std::rc::Rc;
-use std::cell::RefCell;
+use std::cell::{Ref, RefCell};
+use crate::tree_base::TreeNode;
+
+/// 617. 合并二叉树
+/// 给你两棵二叉树： root1 和 root2 。
+/// 想象一下，当你将其中一棵覆盖到另一棵之上时，两棵树上的一些节点将会重叠（而另一些不会）。
+/// 你需要将这两棵树合并成一棵新二叉树。合并的规则是：如果两个节点重叠，那么将这两个节点的值相加作为合并后节点的新值；否则，不为 null 的节点将直接作为新二叉树的节点。
+/// 返回合并后的二叉树。
+/// 注意: 合并过程必须从两个树的根节点开始。
+
+// lc题解
+pub fn merge_trees(root1: Option<Rc<RefCell<TreeNode>>>, root2: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
+    match (root1.clone(), root2.clone()) {
+        (Some(r1), Some(r2)) => {
+            let r1_child_left = r1.borrow_mut().left.take();
+            let r1_child_right = r1.borrow_mut().right.take();
+
+            let r2_child_left = r2.borrow_mut().left.take();
+            let r2_child_right = r2.borrow_mut().right.take();
+
+            Some(Rc::new(RefCell::new(TreeNode {
+                val: r1.borrow().val + r2.borrow().val,
+                left: merge_trees(r1_child_left, r2_child_left),
+                right: merge_trees(r1_child_right, r2_child_right),
+            })))
+        }
+        _ => root1.or(root2),
+    }
+
+}
+// lc 比较优秀的解
+pub fn merge_trees_1(root1: Option<Rc<RefCell<TreeNode>>>, root2: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
+    match (root1, root2) {
+        (Some(t1), Some(t2))=> match (t1.borrow_mut(), t2.borrow_mut()) {
+            (mut t1, mut t2)=> Some(Rc::new(RefCell::new(TreeNode{
+                val:t1.val + t2.val,
+                left:merge_trees_1(t1.left.take(), t2.left.take()),
+                right:merge_trees_1(t1.right.take(), t2.right.take()),
+            })))
+        }
+        (None,None)=>None,
+        (None,some)=>some,
+        (some, None)=>some,
+    }
+}
