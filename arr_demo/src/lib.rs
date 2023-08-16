@@ -13,6 +13,6 @@ mod tests {
 
     #[test]
     fn it_works() {
-        flipgame(vec![1,1], vec![1,2]);
+        circular_game_losers(5,2);
     }
 }

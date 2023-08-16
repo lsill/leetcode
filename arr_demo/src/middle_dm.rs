@@ -1,5 +1,6 @@
 use std::cmp::Ordering;
 use std::collections::{HashMap, HashSet};
+use std::process::abort;
 
 /// 918. 环形子数组的最大和
 /// 给定一个长度为 n 的环形整数数组nums，返回nums的非空 子数组 的最大可能和。
@@ -100,4 +101,64 @@ pub fn flipgame(fronts: Vec<i32>, backs: Vec<i32>) -> i32 {
         }
     }
     good.into_iter().min().unwrap_or(0)
+}
+
+/// 2682. 找出转圈游戏输家
+/// n 个朋友在玩游戏。这些朋友坐成一个圈，按 顺时针方向 从 1 到 n 编号。
+/// 从第 i 个朋友的位置开始顺时针移动 1 步会到达第 (i + 1) 个朋友的位置（1 <= i < n），而从第 n 个朋友的位置开始顺时针移动 1 步会回到第 1 个朋友的位置。
+/// 游戏规则如下：
+/// 第 1 个朋友接球。
+/// 接着，第 1 个朋友将球传给距离他顺时针方向 k 步的朋友。
+/// 然后，接球的朋友应该把球传给距离他顺时针方向 2 * k 步的朋友。
+/// 接着，接球的朋友应该把球传给距离他顺时针方向 3 * k 步的朋友，以此类推。
+/// 换句话说，在第 i 轮中持有球的那位朋友需要将球传递给距离他顺时针方向 i * k 步的朋友。
+/// 当某个朋友第 2 次接到球时，游戏结束。
+/// 在整场游戏中没有接到过球的朋友是 输家 。
+/// 给你参与游戏的朋友数量 n 和一个整数 k ，请按升序排列返回包含所有输家编号的数组 answer 作为答案。
+// 自己做的
+pub fn circular_game_losers(n: i32, k: i32) -> Vec<i32> {
+    let mut kv:HashMap<i32,i32> = HashMap::new();
+    kv.insert(1, 1);
+    let mut next = 1;
+    let mut step  = k;
+    loop {
+        let mut tmp = (next + step) % n;
+        if tmp == 0 {
+            tmp = n;
+        }
+        next = tmp;
+        step += k;
+        if kv.contains_key(&tmp) {
+            break;
+        }
+        kv.insert(tmp, 1);
+    }
+    let mut ans = Vec::new();
+    for i in 1..n+1 {
+        if kv.contains_key(&i) {
+            continue;
+        }
+        ans.push(i);
+    }
+    ans
+}
+
+// lc 好的符合rust的题解
+pub fn circular_game_losers_0(n: i32, k: i32) -> Vec<i32> {
+    let k = k as usize;
+    let n = n as usize;
+    let mut i = 0;
+    let mut j = 1;
+    let mut v = vec![false; n];
+    loop {
+        if v[i] == true {
+            break;
+        } else {
+            v[i] = true;
+        }
+        i+=j*k;
+        i %= n;
+        j += 1;
+    }
+    v.into_iter().enumerate().filter(|(i, f)|!*f).map(|(i, f)| (i+1) as i32).collect()
 }
