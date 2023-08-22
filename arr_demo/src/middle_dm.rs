@@ -1,5 +1,6 @@
 use std::cmp::Ordering;
 use std::collections::{HashMap, HashSet};
+use std::iter::from_fn;
 use std::process::abort;
 
 /// 918. 环形子数组的最大和
@@ -161,4 +162,25 @@ pub fn circular_game_losers_0(n: i32, k: i32) -> Vec<i32> {
         j += 1;
     }
     v.into_iter().enumerate().filter(|(i, f)|!*f).map(|(i, f)| (i+1) as i32).collect()
+}
+
+/// 849. 到最近的人的最大距离
+/// 给你一个数组 seats 表示一排座位，其中 seats[i] = 1 代表有人坐在第 i 个座位上，seats[i] = 0 代表座位 i 上是空的（下标从 0 开始）。
+/// 至少有一个空座位，且至少有一人已经坐在座位上。
+/// 亚历克斯希望坐在一个能够使他与离他最近的人之间的距离达到最大化的座位上。
+/// 返回他到离他最近的人的最大距离。
+
+// lc 双百解 很符合rust写法的解
+pub fn max_dist_to_closest(seats: Vec<i32>) -> i32 {
+    let n = seats.len() as i32;
+    let ans = seats.iter()
+        .enumerate()
+        .fold(
+            (0,n,-1),
+            |(max, first, last), (seat, man)| {
+                let s = seat as i32;
+                if *man == 1 { (max, s.min(first), s)} else { (max.max(s - last), first, last) }
+            },
+        );
+    ans.1.max(n-1 - ans.2).max((ans.0 + 1) / 2)
 }

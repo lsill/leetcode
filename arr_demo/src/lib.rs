@@ -13,6 +13,7 @@ mod tests {
 
     #[test]
     fn it_works() {
-        circular_game_losers(5,2);
+        let  num = max_dist_to_closest(vec![0,0,1]);
+        println!("{}",num );
     }
 }
