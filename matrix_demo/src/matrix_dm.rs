@@ -44,3 +44,25 @@ pub fn robot_sim(commands: Vec<i32>, obstacles: Vec<Vec<i32>>) -> i32 {
     max_dis
 }
 
+/// 1267. 统计参与通信的服务器
+/// 这里有一幅服务器分布图，服务器的位置标识在 m * n 的整数矩阵网格 grid 中，1 表示单元格上有服务器，0 表示没有。
+/// 如果两台服务器位于同一行或者同一列，我们就认为它们之间可以进行通信。
+/// 请你统计并返回能够与至少一台其他服务器进行通信的服务器的数量。
+
+// lc 比较好的解
+pub fn count_servers(grid: Vec<Vec<i32>>) -> i32 {
+    let mut rmp = std::collections::HashMap::new();
+    let mut cmp = std::collections::HashMap::new();
+    let mut st = std::collections::HashSet::new();
+    (0..grid.len()).for_each(|i| (0..grid[0].len()).for_each(|j| {
+        if grid[i][j] == 0 { return; }
+        rmp.entry(i).or_insert(vec![]).push((i, j));
+        cmp.entry(j).or_insert(vec![]).push((i, j));
+    }));
+    for (_, v) in rmp.into_iter().chain(cmp.into_iter()) {
+        if v.len() == 1 { continue; }
+        v.into_iter().for_each(|x| { st.insert(x); });
+    }
+    st.len() as i32
+}
+
