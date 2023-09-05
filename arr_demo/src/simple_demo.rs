@@ -185,3 +185,47 @@ pub fn delete_greatest_value_0(mut grid: Vec<Vec<i32>>) -> i32 {
     }
     res
 }
+/// 2605. 从两个数字数组里生成最小数字
+/// 给你两个只包含 1 到 9 之间数字的数组 nums1 和 nums2 ，每个数组中的元素 互不相同 ，请你返回 最小 的数字，两个数组都 至少 包含这个数字的某个数位。
+/// 示例 1：
+/// 输入：nums1 = [4,1,3], nums2 = [5,7]
+/// 输出：15
+/// 解释：数字 15 的数位 1 在 nums1 中出现，数位 5 在 nums2 中出现。15 是我们能得到的最小数字。
+/// 示例 2：
+/// 输入：nums1 = [3,5,2,6], nums2 = [3,1,7]
+/// 输出：3
+/// 解释：数字 3 的数位 3 在两个数组中都出现了。
+
+// lc 第一种解法 时间复杂度很好
+pub fn min_number(nums1: Vec<i32>,nums2: Vec<i32>) -> i32 {
+    let mut bucket = [0;10];
+    nums1.iter().for_each(|&i|bucket[i as usize] += 1);
+    nums2.iter().for_each(|&i|bucket[i as usize] += 2);
+    let mut num1 = 10;
+    let mut num2 = 20;
+    for (i, &count) in bucket.iter().enumerate() {
+        match count {
+            3 => return i as i32,
+            2 => num1 = num1.min(i as i32),
+            1 => num2 = num2.min(i as i32),
+            _ => continue,
+        }
+    }
+    num1.min(num2) * 10 + num1.max(num2)
+}
+
+// lc 另外一种写法，不太好
+pub fn min_number_1(nums1: Vec<i32>,nums2: Vec<i32>) -> i32 {
+    let d = nums1.iter().filter(|n| nums2.contains(n)).min();
+    return if d.is_none() {
+        let a = nums1.iter().min().unwrap();
+        let b = nums2.iter().min().unwrap();
+        if a < b {
+            a * 10 + b
+        } else {
+            b * 10 + a
+        }
+    } else {
+        *d.unwrap()
+    }
+}
