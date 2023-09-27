@@ -1,6 +1,8 @@
+use std::arch::aarch64::{vaba_s8, veor_s8};
 use std::cmp::Ordering;
-use std::collections::{HashMap, HashSet};
+use std::collections::{HashMap, HashSet, VecDeque};
 use std::iter::from_fn;
+use std::panic::resume_unwind;
 use std::process::abort;
 
 /// 918. 环形子数组的最大和
@@ -183,4 +185,19 @@ pub fn max_dist_to_closest(seats: Vec<i32>) -> i32 {
             },
         );
     ans.1.max(n-1 - ans.2).max((ans.0 + 1) / 2)
+}
+/// 1333. 餐厅过滤器
+/// 给你一个餐馆信息数组 restaurants，其中  restaurants[i] = [idi, ratingi, veganFriendlyi, pricei, distancei]。你必须使用以下三个过滤器来过滤这些餐馆信息。
+/// 其中素食者友好过滤器 veganFriendly 的值可以为 true 或者 false，
+/// 如果为 true 就意味着你应该只包括 veganFriendlyi 为 true 的餐馆，为 false 则意味着可以包括任何餐馆。
+/// 此外，我们还有最大价格 maxPrice 和最大距离 maxDistance 两个过滤器，它们分别考虑餐厅的价格因素和距离因素的最大值。
+/// 过滤后返回餐馆的 id，按照 rating 从高到低排序。如果 rating 相同，那么按 id 从高到低排序。
+/// 简单起见， veganFriendlyi 和 veganFriendly 为 true 时取值为 1，为 false 时，取值为 0 。
+pub fn filter_restaurants(restaurants:Vec<Vec<i32>>, vegan_friendly: i32, max_price: i32, max_distance: i32) -> Vec<i32> {
+    let mut restaurants = restaurants
+        .iter()
+        .filter(|res| res[2] >= vegan_friendly && res[3] <= max_price && res[4] <= max_distance)
+        .collect::<Vec<_>>();
+    restaurants.sort_unstable_by_key(|r| (-r[1], -r[0]));
+    restaurants.iter().map(|r| r[0]).collect()
 }
