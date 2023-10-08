@@ -54,6 +54,10 @@ name = "simple_demo"
 version = "0.1.0"
 
 [[package]]
+name = "simulation_demo"
+version = "0.1.0"
+
+[[package]]
 name = "str_demo"
 version = "0.1.0"
 
