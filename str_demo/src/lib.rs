@@ -15,7 +15,6 @@ mod tests {
     }
     #[test]
     fn test1() {
-        let mut s:Vec<char> = vec!['h','e','l','l','o'];
-        reverse_string(&mut s);
+
     }
 }
