@@ -12,6 +12,6 @@ mod tests {
     use math_simu::*;
     #[test]
     fn it_works() {
-        println!("{}",ways_to_buy_pens_pencils(20,10,5))
+        println!("{}",find_the_array_conc_val(vec![7,52,2,4]))
     }
 }
