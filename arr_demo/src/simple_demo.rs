@@ -229,3 +229,40 @@ pub fn min_number_1(nums1: Vec<i32>,nums2: Vec<i32>) -> i32 {
         *d.unwrap()
     }
 }
+
+/// 260. 只出现一次的数字 III
+/// 给你一个整数数组 nums，其中恰好有两个元素只出现一次，其余所有元素均出现两次。 找出只出现一次的那两个元素。你可以按 任意顺序 返回答案。
+/// 你必须设计并实现线性时间复杂度的算法且仅使用常量额外空间来解决此问题。
+// 自己做的
+pub fn single_number(mut nums: Vec<i32>) -> Vec<i32> {
+    let mut ans:Vec<i32> = vec![];
+    nums.sort();
+    let n = nums.len();
+    let mut one = nums[0];
+    let mut two = nums[1];
+    if one != two {
+        ans.push(one)
+    }
+    for i in 2..n {
+       if one != two && two != nums[i] {
+           ans.push(two);
+       }
+       one = two;
+       two = nums[i];
+    }
+    if nums[n-2] != nums[n-1] {
+        ans.push(nums[n-1]);
+    }
+    ans
+}
+
+// 力扣符合rust的写法
+pub fn single_number_1(mut nums: Vec<i32>) -> Vec<i32> {
+    let ab = nums.iter().fold(0,|acc, n| acc ^ n);
+    let mask = 0b01 << ab.trailing_zeros();
+    nums.iter().fold(vec![0,0], |mut acc,n|{
+        if n & mask != 0 {acc[0] ^= n;}
+        else { acc[1]^=n; }
+        acc
+    })
+}

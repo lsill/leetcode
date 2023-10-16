@@ -13,7 +13,6 @@ mod tests {
 
     #[test]
     fn it_works() {
-        let  num = max_dist_to_closest(vec![0,0,1]);
-        println!("{}",num );
+         single_number(vec![1,2,1,3,2,5]);
     }
 }
