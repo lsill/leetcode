@@ -258,11 +258,11 @@ pub fn single_number(mut nums: Vec<i32>) -> Vec<i32> {
 
 // 力扣符合rust的写法
 pub fn single_number_1(mut nums: Vec<i32>) -> Vec<i32> {
-    let ab = nums.iter().fold(0,|acc, n| acc ^ n);
-    let mask = 0b01 << ab.trailing_zeros();
-    nums.iter().fold(vec![0,0], |mut acc,n|{
-        if n & mask != 0 {acc[0] ^= n;}
-        else { acc[1]^=n; }
-        acc
-    })
+    let xor_all = nums.iter().fold(0, |xor, &x| xor ^ x);
+    let tz = xor_all.trailing_zeros();
+    let mut ans = vec![0, 0];
+    for &x in &nums {
+        ans[x as usize >> tz & 1] ^= x;
+    }
+    ans
 }
