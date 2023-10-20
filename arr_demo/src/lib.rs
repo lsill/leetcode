@@ -13,6 +13,6 @@ mod tests {
 
     #[test]
     fn it_works() {
-         single_number(vec![1,2,1,3,2,5]);
+        categorize_box(1000,35,700,300);
     }
 }
