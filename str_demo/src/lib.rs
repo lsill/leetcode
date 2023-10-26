@@ -15,6 +15,6 @@ mod tests {
     }
     #[test]
     fn test1() {
-
+        count_digits(121);
     }
 }
