@@ -15,6 +15,8 @@ mod tests {
     }
     #[test]
     fn test1() {
-        count_points("G6B6B0G1B0G6G7G2G6R9G0G9B1G5".to_string());
+        //
+        let num = max_product(vec!["abcw".to_string(),"baz".to_string(),"foo".to_string(),"bar".to_string(),"xtfn".to_string(),"abcdef".to_string()]);
+        assert_eq!(num, 16)
     }
 }

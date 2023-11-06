@@ -1,4 +1,4 @@
-use std::arch::aarch64::{int32x2_t, vsubw_u32};
+use std::arch::aarch64::{int32x2_t, int32x2x2_t, vsubw_u32};
 use std::collections::{HashMap, HashSet};
 use std::io::Bytes;
 use std::ops::Sub;
@@ -498,4 +498,73 @@ pub fn count_points_1(rings: String) -> i32 {
         mask[j] |= d[c];
     }
     mask.iter().filter(|&&x| x == 7).count() as i32
+}
+
+/// 318. 最大单词长度乘积
+/// 给你一个字符串数组 words ，找出并返回 length(words[i]) * length(words[j]) 的最大值，并且这两个单词不含有公共字母。如果不存在这样的两个单词，返回 0 。
+/// 示例 1：
+/// 输入：words = ["abcw","baz","foo","bar","xtfn","abcdef"]
+/// 输出：16
+/// 解释：这两个单词为 "abcw", "xtfn"。
+/// 示例 2：
+///
+/// 输入：words = ["a","ab","abc","d","cd","bcd","abcd"]
+/// 输出：4
+/// 解释：这两个单词为 "ab", "cd"。
+/// 示例 3：
+///
+/// 输入：words = ["a","aa","aaa","aaaa"]
+/// 输出：0
+/// 解释：不存在这样的两个单词。
+/// 提示：
+///
+/// 2 <= words.length <= 1000
+/// 1 <= words[i].length <= 1000
+/// words[i] 仅包含小写字母
+
+// 自己做的 垃圾
+pub fn max_product(mut words: Vec<String>) -> i32 {
+    if words.len() < 2 {
+        return 0
+    }
+    let mut record:Vec<u32> = Vec::new();
+    for i in 0..words.len() {
+        let bytes = words[i].chars();
+        let mut re = 0;
+        for by in bytes {
+            let index = by as i32- 'a' as i32;
+            re |=  1u32 << index;
+        }
+        println!("{:b}", re);
+        record.push(re);
+    }
+    let mut ans = 0;
+    for i in 0..record.len()-1 {
+        for i1 in i+1..record.len() {
+            if record[i] & record[i1] == 0 {
+               ans = ans.max((words[i].len() * words[i1].len()) as i32)
+            }
+        }
+    }
+    return ans
+}
+
+// 符合rust的写法
+pub fn max_product_1(mut words: Vec<String>) -> i32 {
+    let mask: Vec<i32> = words
+        .iter()
+        .map(|word| {
+            word.chars()
+                .fold(0, |acc, c| acc | 1 << (c as u8 - 'a' as u8))
+        })
+        .collect();
+    let mut ans = 0;
+    for i in 0..mask.len() {
+        for j in i + 1..mask.len() {
+            if mask[i] & mask[j] == 0 {
+                ans = ans.max(words[i].len() * words[j].len());
+            }
+        }
+    }
+    ans as i32
 }
