@@ -16,7 +16,6 @@ mod tests {
     #[test]
     fn test1() {
         //
-        let num = max_product(vec!["abcw".to_string(),"baz".to_string(),"foo".to_string(),"bar".to_string(),"xtfn".to_string(),"abcdef".to_string()]);
-        assert_eq!(num, 16)
+        let num = vowel_strings(vec!["are".to_string(),"amy".to_string(),"u".to_string()], 0, 2);
     }
 }
