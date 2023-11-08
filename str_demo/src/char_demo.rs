@@ -623,3 +623,67 @@ pub fn vowel_strings_1(words: Vec<String>, left: i32, right: i32) -> i32 {
     }
     ans
 }
+
+/// 2609. 最长平衡子字符串
+/// 给你一个仅由 0 和 1 组成的二进制字符串 s 。
+/// 如果子字符串中 所有的 0 都在 1 之前 且其中 0 的数量等于 1 的数量，则认为 s 的这个子字符串是平衡子字符串。请注意，空子字符串也视作平衡子字符串。
+/// 返回  s 中最长的平衡子字符串长度。
+/// 子字符串是字符串中的一个连续字符序列。
+/// 示例 1：
+/// 输入：s = "01000111"
+/// 输出：6
+/// 解释：最长的平衡子字符串是 "000111" ，长度为 6 。
+/// 示例 2：
+/// 输入：s = "00111"
+/// 输出：4
+/// 解释：最长的平衡子字符串是 "0011" ，长度为  4 。
+/// 示例 3：
+/// 输入：s = "111"
+/// 输出：0
+/// 解释：除了空子字符串之外不存在其他平衡子字符串，所以答案为 0 。
+/// 提示：
+/// 1 <= s.length <= 50
+/// '0' <= s[i] <= '1'
+
+// 自己做的垃圾
+pub fn find_the_longest_balanced_substring(s: String) -> i32 {
+    let mut ans = 0;
+    let mut index:usize = 0;
+    let chars = s.as_bytes();
+    let mut num_0 = 0;
+    let mut num_1 = 0;
+    while index < chars.len() {
+        while index < chars.len() && chars[index] == '0' as u8 {
+            num_0 += 1;
+            index +=1;
+        }
+        while index < chars.len() && chars[index] == '1' as u8 {
+            num_1 += 1;
+            index += 1;
+        }
+        let min = num_0.min(num_1);
+        num_0 = 0;
+        num_1 = 0;
+        ans = ans.max(min);
+    }
+    ans * 2
+}
+
+// 符合rust的写法
+pub fn find_the_longest_balanced_substring_1(s: String) -> i32 {
+    let s: Vec<u8> = s.bytes().collect();
+    let mut ans = 0;
+    let mut pre = 0;
+    let mut cur = 0;
+    for (i, &c) in s.iter().enumerate() {
+        cur += 1;
+        if i == s.len() - 1 || c != s[i + 1] { // i 是连续相同段的末尾
+            if c == '1' as u8 {
+                ans = ans.max(pre.min(cur) * 2);
+            }
+            pre = cur;
+            cur = 0;
+        }
+    }
+    ans
+}

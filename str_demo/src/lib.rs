@@ -16,6 +16,6 @@ mod tests {
     #[test]
     fn test1() {
         //
-        let num = vowel_strings(vec!["are".to_string(),"amy".to_string(),"u".to_string()], 0, 2);
+        let num = find_the_longest_balanced_substring("01000111".to_string());
     }
 }
