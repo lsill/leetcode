@@ -16,6 +16,6 @@ mod tests {
     #[test]
     fn test1() {
         //
-        let num = find_the_longest_balanced_substring("01000111".to_string());
+        let num = find_the_longest_balanced_substring_1("01000111".to_string());
     }
 }
