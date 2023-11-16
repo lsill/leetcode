@@ -13,6 +13,6 @@ mod tests {
 
     #[test]
     fn it_works() {
-        categorize_box(1000,35,700,300);
+        longest_alternating_subarray(vec![4], 3);
     }
 }
