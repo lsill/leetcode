@@ -453,3 +453,18 @@ pub fn min_deletion_2(nums: Vec<i32>) -> i32 {
         r + 1
     }
 }
+
+pub fn min_deletion_3(nums: Vec<i32>) -> i32 {
+    let mut ans = 0;
+    let n = nums.len();
+    for i in 0..n {
+        if (i - ans) % 2 == 0 && i + 1 < n && nums[i] == nums[i+1] {
+            ans += 1;
+        }
+    }
+    if (n - ans) % 2 != 0 {
+        (ans + 1) as i32
+    }else {
+        ans as i32
+    }
+}
