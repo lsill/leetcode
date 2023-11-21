@@ -13,6 +13,6 @@ mod tests {
 
     #[test]
     fn it_works() {
-        longest_alternating_subarray(vec![4], 3);
+        min_deletion_1(vec![1,1,2,2,3,3]);
     }
 }
