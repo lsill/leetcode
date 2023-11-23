@@ -16,6 +16,7 @@ mod tests {
     #[test]
     fn test1() {
         //
-        let num = find_the_longest_balanced_substring_1("01000111".to_string());
+        let ans = entity_parser("&amp; is an HTML entity but &ambassador; is not.".to_string());
+        println!("{}", ans)
     }
 }
