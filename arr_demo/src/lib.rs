@@ -13,6 +13,6 @@ mod tests {
 
     #[test]
     fn it_works() {
-        min_deletion_1(vec![1,1,2,2,3,3]);
+        first_complete_index(vec![1,3,4,2], vec![vec![1,4],vec![2,3]]);
     }
 }

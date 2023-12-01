@@ -468,3 +468,49 @@ pub fn min_deletion_3(nums: Vec<i32>) -> i32 {
         ans as i32
     }
 }
+
+/// 2661. 找出叠涂元素
+/// 给你一个下标从 0 开始的整数数组 arr 和一个 m x n 的整数 矩阵 mat 。arr 和 mat 都包含范围 [1，m * n] 内的 所有 整数。
+/// 从下标 0 开始遍历 arr 中的每个下标 i ，并将包含整数 arr[i] 的 mat 单元格涂色。
+/// 请你找出 arr 中在 mat 的某一行或某一列上都被涂色且下标最小的元素，并返回其下标 i 。
+/// 示例 1：
+/// 输入：arr = [1,3,4,2], mat = [[1,4],[2,3]]
+/// 输出：2
+/// 示例 2：
+/// 输入：arr = [2,8,7,4,1,3,5,6,9], mat = [[3,2,5],[1,4,6],[8,7,9]]
+/// 输出：3
+/// 提示：
+/// m == mat.length
+/// n = mat[i].length
+/// arr.length == m * n
+/// 1 <= m, n <= 105
+/// 1 <= m * n <= 105
+/// 1 <= arr[i], mat[r][c] <= m * n
+/// arr 中的所有整数 互不相同
+/// mat 中的所有整数 互不相同
+
+// 力扣解
+pub fn first_complete_index(arr: Vec<i32>, mat: Vec<Vec<i32>>) -> i32 {
+    let m = mat.len();
+    let n = mat[0].len();
+    let mut idx = HashMap::new();
+    for i in 0..m {
+        for j in 0..n {
+            idx.insert(mat[i][j], [i, j]);
+        }
+    }
+
+    let mut row = vec![0; m];
+    let mut col = vec![0; n];
+    for k in 0..arr.len() {
+        let x = idx.get(&arr[k]).unwrap();
+        let i = x[0];
+        let j = x[1];
+        row[i] += 1;
+        col[j] += 1;
+        if row[i] == n || col[j] == m {
+            return k as i32;
+        }
+    }
+    -1
+}
