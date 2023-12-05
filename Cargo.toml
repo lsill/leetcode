@@ -15,5 +15,6 @@ members = [
     "send_point",
     "simple_demo",
     "tree_demo",
-    "simulation_demo"
+    "simulation_demo",
+    "graph_demo"
 ]

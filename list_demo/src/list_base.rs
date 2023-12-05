@@ -1,3 +1,6 @@
+use std::borrow::Borrow;
+use std::collections::HashMap;
+
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
     pub val:i32,
