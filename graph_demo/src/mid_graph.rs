@@ -1,4 +1,4 @@
-
+use std::collections::HashMap;
 
 /// 2477. 到达首都的最少油耗
 /// 给你一棵 n 个节点的树（一个无向、连通、无环图），每个节点表示一个城市，编号从 0 到 n - 1 ，且恰好有 n - 1 条路。
@@ -67,3 +67,63 @@ fn minimum_fuel_cost_dfs(x:usize, fa:usize, g:&Vec<Vec<usize>>, seats:i32, ans:&
     }
     size
 }
+
+
+/// 1466. 重新规划路线
+/// n 座城市，从 0 到 n-1 编号，其间共有 n-1 条路线。因此，要想在两座不同城市之间旅行只有唯一一条路线可供选择（路线网形成一颗树）。去年，交通运输部决定重新规划路线，以改变交通拥堵的状况。
+/// 路线用 connections 表示，其中 connections[i] = [a, b] 表示从城市 a 到 b 的一条有向路线。
+/// 今年，城市 0 将会举办一场大型比赛，很多游客都想前往城市 0 。
+/// 请你帮助重新规划路线方向，使每个城市都可以访问城市 0 。返回需要变更方向的最小路线数。
+/// 题目数据 保证 每个城市在重新规划路线方向后都能到达城市 0 。
+/// 示例 1：
+/// 输入：n = 6, connections = [[0,1],[1,3],[2,3],[4,0],[4,5]]
+/// 输出：3
+/// 解释：更改以红色显示的路线的方向，使每个城市都可以到达城市 0 。
+/// 示例 2：
+/// 输入：n = 5, connections = [[1,0],[1,2],[3,2],[3,4]]
+/// 输出：2
+/// 解释：更改以红色显示的路线的方向，使每个城市都可以到达城市 0 。
+/// 示例 3：
+/// 输入：n = 3, connections = [[1,0],[2,0]]
+/// 输出：0
+/// 提示：
+/// 2 <= n <= 5 * 10^4
+/// connections.length == n-1
+/// connections[i].length == 2
+/// 0 <= connections[i][0], connections[i][1] <= n-1
+/// connections[i][0] != connections[i][1]
+
+// 力扣题解dfs
+pub fn min_reorder(n: i32, connections: Vec<Vec<i32>>) -> i32 {
+    let mut g: Vec<Vec<(i32, i32)>> = vec![vec![]; n as usize];
+    for e in connections.iter() {
+        let a = e[0] as usize;
+        let b = e[1] as usize;
+        g[a].push((b as i32, 1));
+        g[b].push((a as i32, 0));
+    }
+    fn dfs(a: usize, fa: i32, g: &Vec<Vec<(i32, i32)>>) -> i32 {
+        let mut ans = 0;
+        for &(b, c) in g[a].iter() {
+            if b != fa {
+                ans += c + dfs(b as usize, a as i32, g);
+            }
+        }
+        ans
+    }
+    dfs(0, -1, &g)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
