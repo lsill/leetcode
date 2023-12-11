@@ -1,4 +1,5 @@
 use std::cmp;
+use std::collections::BinaryHeap;
 /// 931. 下降路径最小和
 /// 给你一个 n x n 的 方形 整数数组matrix ，请你找出并返回通过 matrix 的下降路径 的 最小和 。
 /// 下降路径 可以从第一行中的任何元素开始，并从每一行中选择一个元素。
@@ -122,3 +123,84 @@ pub fn max_taxi_earnings_1(n: i32, rides: Vec<Vec<i32>>) -> i64 {
     }
     dfs(n, &mut memo, &groups)
 }
+
+
+/// 1631. 最小体力消耗路径
+/// 你准备参加一场远足活动。给你一个二维 rows x columns 的地图 heights ，其中 heights[row][col] 表示格子 (row, col) 的高度。
+/// 一开始你在最左上角的格子 (0, 0) ，且你希望去最右下角的格子 (rows-1, columns-1) （注意下标从 0 开始编号）。你每次可以往 上，下，左，右 四个方向之一移动，你想要找到耗费 体力 最小的一条路径。
+/// 一条路径耗费的 体力值 是路径上相邻格子之间 高度差绝对值 的 最大值 决定的。
+/// 请你返回从左上角走到右下角的最小 体力消耗值 。
+/// 示例 1：
+/// 输入：heights = [[1,2,2],[3,8,2],[5,3,5]]
+/// 输出：2
+/// 解释：路径 [1,3,5,3,5] 连续格子的差值绝对值最大为 2 。
+/// 这条路径比路径 [1,2,2,2,5] 更优，因为另一条路径差值最大值为 3 。
+/// 示例 2：
+/// 输入：heights = [[1,2,3],[3,8,4],[5,3,5]]
+/// 输出：1
+/// 解释：路径 [1,2,3,4,5] 的相邻格子差值绝对值最大为 1 ，比路径 [1,3,5,3,5] 更优。
+/// 示例 3：
+/// 输入：heights = [[1,2,1,1,1],[1,2,1,2,1],[1,2,1,2,1],[1,2,1,2,1],[1,1,1,2,1]]
+/// 输出：0
+/// 解释：上图所示路径不需要消耗任何体力。
+/// 提示：
+/// rows == heights.length
+/// columns == heights[i].length
+/// 1 <= rows, columns <= 100
+/// 1 <= heights[i][j] <= 106
+
+// 力扣符合rust的解
+#[derive(PartialEq, Eq)]
+struct Item (i32,i32,i32);
+
+// 实现 Ord 特性用于比较内层 Vec 的第三个元素
+impl Ord for Item {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        other.2.cmp(&self.2)
+    }
+}
+
+// 实现 PartialOrd 特性用于比较内层 Vec 的第三个元素
+impl PartialOrd for Item {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+pub fn minimum_effort_path(heights: Vec<Vec<i32>>) -> i32 {
+    let n = heights.len();
+    if n == 0 { return 0;}
+    let m = heights[0].len();
+    if m == 0 { return 0; }
+    let mut d = vec![vec![std::i32::MAX; m]; n];
+    let mut seen = vec![vec![false; m]; n];
+    let mut heap = BinaryHeap::new();
+    let dirs: Vec<i32> = vec![0, 1, 0, -1, 0];
+    heap.push(Item(0,0,0));
+    d[0][0] = 0;
+    while let Some(cur) = heap.pop(){
+        if cur.0 == ((n-1) as i32) && cur.1 == ((m-1) as i32){
+            return cur.2;
+        }
+        if seen[cur.0 as usize][cur.1 as usize]{
+            continue;
+        }
+        seen[cur.0 as usize][cur.1 as usize] = true;
+        dirs.windows(2).for_each(|dir|{
+            let nx = cur.0 + dir[0];
+            let ny = cur.1 + dir[1];
+            if 0<=nx && nx<(n as i32) && 0<=ny && ny<(m as i32){
+                let nd = std::cmp::max(cur.2,
+                                       (heights[nx as usize][ny as usize] -
+                                           heights[cur.0 as usize][cur.1 as usize]).abs()
+                );
+                if nd < d[nx as usize][ny as usize]{
+                    d[nx as usize][ny as usize] = nd;
+                    heap.push(Item(nx as i32,ny as i32,nd));
+                }
+            }
+        });
+    }
+    0i32
+}
+
