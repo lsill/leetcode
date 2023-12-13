@@ -16,7 +16,7 @@ mod tests {
     #[test]
     fn test1() {
         //
-        let ans = entity_parser("&amp; is an HTML entity but &ambassador; is not.".to_string());
+        let ans = make_smallest_palindrome("seven".to_string());
         println!("{}", ans)
     }
 }
