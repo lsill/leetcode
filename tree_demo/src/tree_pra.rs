@@ -1,6 +1,8 @@
 use std::rc::Rc;
 use std::cell::{Ref, RefCell, RefMut};
-use std::ptr::{addr_of_mut, NonNull};
+use std::char::from_digit;
+use std::collections::VecDeque;
+use std::ptr::{addr_of_mut, NonNull, write};
 use crate::tree_base::TreeNode;
 
 /// 617. 合并二叉树
@@ -75,5 +77,96 @@ pub fn bst_to_gst(root: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<Tree
     }
     let mut s = 0;
     dfs(root.as_ref(), &mut s);
+    root
+}
+
+/// 2415. 反转二叉树的奇数层
+/// 给你一棵 完美 二叉树的根节点 root ，请你反转这棵树中每个 奇数 层的节点值。
+/// 例如，假设第 3 层的节点值是 [2,1,3,4,7,11,29,18] ，那么反转后它应该变成 [18,29,11,7,4,3,1,2] 。
+/// 反转后，返回树的根节点。
+/// 完美 二叉树需满足：二叉树的所有父节点都有两个子节点，且所有叶子节点都在同一层。
+/// 节点的 层数 等于该节点到根节点之间的边数。
+/// 示例 1：
+/// 输入：root = [2,3,5,8,13,21,34]
+/// 输出：[2,5,3,8,13,21,34]
+/// 解释：
+/// 这棵树只有一个奇数层。
+/// 在第 1 层的节点分别是 3、5 ，反转后为 5、3 。
+/// 示例 2：
+/// 输入：root = [7,13,11]
+/// 输出：[7,11,13]
+/// 解释：
+/// 在第 1 层的节点分别是 13、11 ，反转后为 11、13 。
+/// 示例 3：
+/// 输入：root = [0,1,2,0,0,0,0,1,1,1,1,2,2,2,2]
+/// 输出：[0,2,1,0,0,0,0,2,2,2,2,1,1,1,1]
+/// 解释：奇数层由非零值组成。
+/// 在第 1 层的节点分别是 1、2 ，反转后为 2、1 。
+/// 在第 3 层的节点分别是 1、1、1、1、2、2、2、2 ，反转后为 2、2、2、2、1、1、1、1 。
+/// 提示：
+/// 树中的节点数目在范围 [1, 214] 内
+/// 0 <= Node.val <= 105
+/// root 是一棵 完美 二叉树
+
+// 力扣一种解
+pub fn reverse_odd_levels_1(root: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
+    use std::ptr::null_mut;
+    fn dfs(root:&Option<Rc<RefCell<TreeNode>>>, tab: &mut Vec<*mut i32>, idx:usize) -> usize {
+        if let Some(root) = root {
+            tab[idx] = &mut root.borrow_mut().val as *mut i32;
+            dfs(&root.borrow().left, tab, idx *2);
+            dfs(&root.borrow_mut().right, tab, idx * 2 + 1) + 1
+        } else {
+            0
+        }
+    }
+    let mut tab = vec![null_mut(); (1 << 14) + 1];
+    let hight = dfs(&root, &mut tab, 1);
+    unsafe {
+        for h in (1..hight).step_by(2) {
+            let mut i = 2usize.pow(h as u32);
+            let mut j = 2usize.pow(h as u32 + 1) - 1;
+            while i < j {
+                std::mem::swap(&mut (*tab[i]), &mut (*tab[j]));
+                i += 1;
+                j -= 1;
+            }
+        }
+    }
+    root
+}
+
+// 力扣最优解
+pub fn reverse_odd_levels(root: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
+    let mut queue = VecDeque::new();
+    if let Some(root) = root.clone() {
+        queue.push_back(root)
+    }
+    let mut is_odd_level = false;
+    while !queue.is_empty() {
+        let level_size = queue.len();
+        let mut level_nodes = Vec::new();
+        let mut values = Vec::new();
+
+        for _ in 0..level_size {
+            if let Some(node) = queue.pop_front() {
+                values.push(node.borrow().val);
+                level_nodes.push(node.clone());
+                if let Some(left) = node.borrow().left.clone() {
+                    queue.push_back(left);
+                }
+                if let Some(right) = node.borrow().right.clone() {
+                    queue.push_back(right);
+                }
+            }
+        }
+        if is_odd_level {
+            values.reverse();
+            for (i, node) in level_nodes.iter().enumerate() {
+                node.borrow_mut().val = values[i];
+            }
+        }
+        is_odd_level = !is_odd_level;
+    }
     root
 }
