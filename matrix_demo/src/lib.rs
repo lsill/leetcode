@@ -9,10 +9,10 @@ pub fn add(left: usize, right: usize) -> usize {
 mod tests {
     use super::*;
     use simple_matrix::*;
+    use crate::matrix_dm::find_peak_grid_1;
 
     #[test]
     fn it_works() {
-        let n = diagonal_sum(vec![vec![1,2,3],vec![4,5,6],vec![7,8,9]]);
-        println!("{}",n);
+        find_peak_grid_1(vec![vec![1,4],vec![3,2]]);
     }
 }
