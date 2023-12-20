@@ -16,7 +16,7 @@ mod tests {
     #[test]
     fn test1() {
         //
-        let ans = make_smallest_palindrome("seven".to_string());
+        let ans = is_acronym(vec!["alice".to_string(),"bob".to_string(),"charlie".to_string()],"abc".to_string());
         println!("{}", ans)
     }
 }
