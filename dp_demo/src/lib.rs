@@ -2,6 +2,7 @@
 
 mod simple_dp;
 mod classical_demo;
+mod single_stack;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right
