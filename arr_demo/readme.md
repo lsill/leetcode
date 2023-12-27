@@ -1,0 +1,1 @@
+- [保龄球游戏的获胜者](https://github.com/lsill/leetcode/blob/main/arr_demo/src/typical_rust.rs) 题解写的很rust
