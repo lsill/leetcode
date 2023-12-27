@@ -1,5 +1,6 @@
 mod simple_demo;
 mod middle_dm;
+mod typical_rust;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right

@@ -1,3 +1,4 @@
+use std::ascii::escape_default;
 use std::os::unix::raw::gid_t;
 
 /// 1253. 重构 2 行二进制矩阵
@@ -511,7 +512,5 @@ pub fn longest_alternating_subarray(nums: Vec<i32>, threshold: i32) -> i32 {
     }
     ans as i32
 }
-
-
 
 
