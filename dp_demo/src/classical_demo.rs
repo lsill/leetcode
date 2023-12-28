@@ -46,7 +46,7 @@ fn min_falling_path_sum_1_dp(matrix:&Vec<Vec<i32>>,i:usize,j:usize,memo:&mut Vec
     if memo[i][j]!=66666{
         return memo[i][j];
     }
-    memo[i][j]=cmp::min(memo(matrix,i-1,j,memo),cmp::min(memo(matrix,i-1,j-1,memo),memo(matrix,i-1,j+1,memo)))+matrix[i][j];
+    memo[i][j]=cmp::min(min_falling_path_sum_1_dp(matrix,i-1,j,memo),cmp::min(min_falling_path_sum_1_dp(matrix,i-1,j-1,memo),min_falling_path_sum_1_dp(matrix,i-1,j+1,memo)))+matrix[i][j];
     return memo[i][j];
 }
 

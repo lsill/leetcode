@@ -78,3 +78,62 @@ pub fn max_alternating_sum_1(nums: Vec<i32>) -> i64 {
     }
     even
 }
+
+/// 2735. 收集巧克力
+/// 给你一个长度为 n 、下标从 0 开始的整数数组 nums ，表示收集不同巧克力的成本。每个巧克力都对应一个不同的类型，最初，位于下标 i 的巧克力就对应第 i 个类型。
+/// 在一步操作中，你可以用成本 x 执行下述行为：
+///
+/// 同时修改所有巧克力的类型，将巧克力的类型 ith 修改为类型 ((i + 1) mod n)th。
+/// 假设你可以执行任意次操作，请返回收集所有类型巧克力所需的最小成本。
+/// 示例 1：
+/// 输入：nums = [20,1,15], x = 5
+/// 输出：13
+/// 解释：最开始，巧克力的类型分别是 [0,1,2] 。我们可以用成本 1 购买第 1 个类型的巧克力。
+/// 接着，我们用成本 5 执行一次操作，巧克力的类型变更为 [1,2,0] 。我们可以用成本 1 购买第 2 个类型的巧克力。
+/// 然后，我们用成本 5 执行一次操作，巧克力的类型变更为 [2,0,1] 。我们可以用成本 1 购买第 0 个类型的巧克力。
+/// 因此，收集所有类型的巧克力需要的总成本是 (1 + 5 + 1 + 5 + 1) = 13 。可以证明这是一种最优方案。
+/// 示例 2：
+/// 输入：nums = [1,2,3], x = 4
+/// 输出：6
+/// 解释：我们将会按最初的成本收集全部三个类型的巧克力，而不需执行任何操作。因此，收集所有类型的巧克力需要的总成本是 1 + 2 + 3 = 6 。
+/// 提示：
+/// 1 <= nums.length <= 1000
+/// 1 <= nums[i] <= 109
+/// 1 <= x <= 109
+/// ![](https://raw.githubusercontent.com/lsill/gitLink/main/document/photo/leetcode/dp/lc2735.jpg)
+// 抄的解1
+pub fn min_cost_1(nums: Vec<i32>, x: i32) -> i64 {
+    let n = nums.len();
+    let mut f = vec![vec![0;n]; n];
+    for i in 0..n {
+       f[i][0] = nums[i];
+        for j in 1..n {
+            f[i][j] = f[i][j-1].min(nums[(i+j) % n]);
+        }
+    }
+    let mut ans = i64::MAX;
+    for j in 0..n {
+        let mut cost = (x as i64) * (j as i64);
+        for i in 0..n {
+            cost += f[i][j] as i64;
+        }
+        ans = ans.min(cost);
+    }
+    ans
+}
+
+// 符合rust的解
+pub fn min_cost(nums: Vec<i32>, x: i32) -> i64 {
+    let n = nums.len();
+    let mut f = nums.clone();
+    let mut ans: i64 = nums.iter().fold(0, |acc, &cur| acc + cur as i64);
+
+    for k in 1..n {
+        for i in 0..n {
+            f[i] = f[i].min(nums[(i + k) % n]);
+        }
+        let sum = f.iter().fold(0, |acc, &cur| acc + cur as i64);
+        ans = ans.min((k as i64 * x as i64 + sum) as i64);
+    }
+    ans
+}

@@ -14,6 +14,6 @@ mod tests {
     use simple_dp::*;
     #[test]
     fn it_works() {
-        maximum_sum_bc(vec![1,-2,0,3]);
+        min_cost(vec![20, 1, 15], 5);
     }
 }
