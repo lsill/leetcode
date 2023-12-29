@@ -1,1 +1,2 @@
 - [保龄球游戏的获胜者](https://github.com/lsill/leetcode/blob/main/arr_demo/src/typical_rust.rs) 题解写的很rust
+- [购买两块巧克力](https://github.com/lsill/leetcode/blob/main/arr_demo/src/simple_demo.rs) 没啥营养的简单题

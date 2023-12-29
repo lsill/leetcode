@@ -14,6 +14,6 @@ mod tests {
 
     #[test]
     fn it_works() {
-        first_complete_index(vec![1,3,4,2], vec![vec![1,4],vec![2,3]]);
+        buy_choco(vec![98,54,6,34,66,63,52,39], 62);
     }
 }
