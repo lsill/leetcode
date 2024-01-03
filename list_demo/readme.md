@@ -1,0 +1,1 @@
+- [2487. 从链表中移除节点](https://github.com/lsill/leetcode/blob/main/list_demo/src/list_dfs_or_bfs.rs) dfs 删除链表元素
