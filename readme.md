@@ -10,3 +10,6 @@ if you want to see the solutation,please visit www.leetcode.com
 
 ### 链表题解集合
 [Link](https://github.com/lsill/leetcode/blob/main/list_demo/readme.md)
+
+### 二维数据题解集合
+[Link](https://github.com/lsill/leetcode/blob/main/matrix_demo/readme.md)
