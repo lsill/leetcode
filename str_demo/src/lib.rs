@@ -1,4 +1,5 @@
 mod char_demo;
+mod string_mid;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right
