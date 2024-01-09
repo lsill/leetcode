@@ -21,7 +21,6 @@ use std::collections::{HashMap, HashSet};
 /// dictionary 中的单词互不相同。
 // lc hashset + dp
 pub fn min_extra_char(s: String, dictionary: Vec<String>) -> i32 {
-    let mut ans = 0;
     let mut kv:HashSet<String> = HashSet::new();
     for v in &dictionary {
         kv.insert(v.clone());
@@ -36,5 +35,5 @@ pub fn min_extra_char(s: String, dictionary: Vec<String>) -> i32 {
             }
         }
     }
-    ans
+    dp[n]
 }
