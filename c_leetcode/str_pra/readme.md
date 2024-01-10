@@ -1,0 +1,1 @@
+[2696. 删除子串后的字符串最小长度](https://github.com/lsill/leetcode/blob/main/c_leetcode/str_pra/strTest.cpp) 栈操作 值得看
