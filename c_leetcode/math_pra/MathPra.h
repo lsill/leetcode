@@ -13,6 +13,8 @@ class MathPra {
 public:
     int magicalString(int n);
     int reachNumber(int target);
+    int addMinimum(string word);
+    int addMinimum_1(string word);
 };
 
 

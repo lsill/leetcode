@@ -18,7 +18,6 @@ public:
     int maxRepeating(string sequence, string word);
     bool halvesAreAlike(string s);
     int expressiveWords(string s, vector<string> &words);
-    int minLength(string s);
 };
 
 #endif //NEW_C_STUDY_STRTEST_H
