@@ -3,6 +3,8 @@
 //
 
 #include "strTest.h"
+#include <string>
+#include <unordered_map>
 
 int StringPra::maxRepeating(std::string sequence, std::string word)
 {
@@ -80,5 +82,27 @@ int StringPra::expressiveWords(string s, vector<string> &words)
             ++ans;
         }
     }
+    return ans;
+}
+
+int StringPra::countWords(vector<string> &words1, vector<string> &words2)
+{
+    unordered_map<string, int> kv1;
+    unordered_map<string, int> kv2;
+    for (const string& word : words1) {
+        kv1[word] += 1;
+    }
+    for (const string& word : words2) {
+        kv2[word] += 1;
+    }
+    int ans = 0;
+    for (const auto& pair : kv1) {
+        if (pair.second == 1) {
+            if (kv2[pair.first] == 1) {
+                ans += 1;
+            }
+        }
+    }
+
     return ans;
 }

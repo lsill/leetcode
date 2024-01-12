@@ -7,6 +7,7 @@
 
 #include <string>
 #include <unordered_map>
+#include <vector>
 
 using namespace std;
 
@@ -18,6 +19,7 @@ public:
     int maxRepeating(string sequence, string word);
     bool halvesAreAlike(string s);
     int expressiveWords(string s, vector<string> &words);
+    int countWords(vector<string>& words1, vector<string>& words2);
 };
 
 #endif //NEW_C_STUDY_STRTEST_H

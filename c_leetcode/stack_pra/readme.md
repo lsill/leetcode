@@ -1,1 +1,0 @@
-[2696. 删除子串后的字符串最小长度](https://github.com/lsill/leetcode/blob/main/c_leetcode/stack_pra/single_stack_md.cpp) 栈操作 值得看
