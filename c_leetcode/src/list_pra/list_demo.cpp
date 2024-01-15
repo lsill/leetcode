@@ -44,7 +44,9 @@ ListNode* ListDemo::deleteDuplicates(ListNode *head) {
         if (cur->next->val == cur->next->next->val) {
             int x = cur->next->val;
             while (cur->next && cur->next->val == x) {
+                ListNode* tmp = cur->next; // 删除跳过的节点
                 cur->next = cur->next->next;
+                delete tmp;
             }
         }else {
             cur = cur->next;
