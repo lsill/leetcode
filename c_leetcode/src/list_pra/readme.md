@@ -1,1 +1,1 @@
-[82. 删除排序链表中的重复元素 II](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/list_pra/list_demo.cpp)
+- [82. 删除排序链表中的重复元素 II](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/list_pra/list_demo.cpp) 链表基本操作，值得看
