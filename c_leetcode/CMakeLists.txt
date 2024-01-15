@@ -57,4 +57,5 @@ include_directories(${LC_INCLUDE_DIR})
 
 add_subdirectory(src/stack_pra)
 add_subdirectory(src/str_pra)
+add_subdirectory(src/list_pra)
 add_subdirectory(src/test)
