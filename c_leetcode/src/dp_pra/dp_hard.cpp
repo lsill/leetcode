@@ -22,6 +22,9 @@
 //提示：
 //1 <= num1 <= num2 <= 1022
 //1 <= min_sum <= max_sum <= 400
+
+// 求区间[num1,num2]中，数位和在[min_sum, max_sum]的数的个数。对于这种区间[l,r]的问题可以
+// 转化成[1,r]和[r,l-1]的答案，然后相减即可。
 int DpHard::count(std::string num1, std::string num2, int min_sum, int max_sum){
     const int mod = 1e9 + 7;
     int f[23][220];
