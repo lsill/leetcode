@@ -6,7 +6,7 @@ foreach (test_source ${LC_TEST_SOURCES})
     get_filename_component(test_filename ${test_source} NAME)
     string(REPLACE ".cpp" "" test_name ${test_filename})
 
-    add_executable(${test_name} EXCLUDE_FROM_ALL ${test_source})
+    add_executable(${test_name} EXCLUDE_FROM_ALL ${test_source} dp.cpp)
     #add_dependencies(build-tests ${test_filename})
     #add_dependencies(check-tests ${test_filename})
 
