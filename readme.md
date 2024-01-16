@@ -8,6 +8,8 @@ if you want to see the solutation,please visit www.leetcode.com
 ### 动态规划题集合
 [rust_link](https://github.com/lsill/leetcode/blob/main/dp_demo/readme.md)
 
+[cpp_lint](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/dp_pra/readme.md)
+
 ### 链表题解集合
 [rust_link](https://github.com/lsill/leetcode/blob/main/list_demo/readme.md)
 

@@ -22,4 +22,6 @@ public:
     int countWords(vector<string>& words1, vector<string>& words2);
 };
 
+
+
 #endif //NEW_C_STUDY_STRTEST_H
