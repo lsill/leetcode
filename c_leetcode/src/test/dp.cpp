@@ -6,6 +6,6 @@
 
 int main(){
     DpHard* dp = new DpHard;
-    std::cout<< dp->count("1", "12", 1,8) << std::endl;
+    std::cout<< dp->countLc("1", "12", 1,8) << std::endl;
     delete dp;
 }

@@ -13,7 +13,7 @@ private:
     const int MOD = 10e9 + 7;
     long long f[30][500], g[30][500];
 public:
-    int count(std::string num1, std::string num2, int min_sum, int max_sum);
+    int countLc(std::string num1, std::string num2, int min_sum, int max_sum);
     int countBest(std::string num1, std::string num2, int min_sum, int max_sum);
 };
 

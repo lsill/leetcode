@@ -22,6 +22,10 @@ public:
     int countWords(vector<string>& words1, vector<string>& words2);
 };
 
-
+class StringSimple {
+public:
+    int maximumNumberOfStringPairsSelf(vector<string>& words);
+    int maximumNumberOfStringPairs(vector<string>& words);
+};
 
 #endif //NEW_C_STUDY_STRTEST_H
