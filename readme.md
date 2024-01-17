@@ -5,6 +5,8 @@ if you want to see the solutation,please visit www.leetcode.com
 ### 数组迭代题集合
 [rust_link](https://github.com/lsill/leetcode/blob/main/arr_demo/readme.md)
 
+[cpp_lint](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/arr_pra/readme.md)
+
 ### 动态规划题集合
 [rust_link](https://github.com/lsill/leetcode/blob/main/dp_demo/readme.md)
 
