@@ -9,6 +9,6 @@
 int main()
 {
     ArrayMid mid;
-    std::vector<int> v  = {100,4,200,1,3,2};
-    std::cout<<mid.longestConsecutiveLikeDp(v) <<std::endl;
+    std::vector<int> v  = {4,1,6,5};
+    std::cout<<mid.minimumRemoval(v) <<std::endl;
 }
