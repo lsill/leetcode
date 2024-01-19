@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-    StringSimple sp;
-    vector<std::string> in = {"cd","ac","dc","ca","zz"};
-    sp.maximumNumberOfStringPairs(in);
+    StringMid sp;
+    vector<std::string> in = {"efadafasaadgadagadaaaaaaaaaaaaaaaaaaaaaat"};
+    sp.groupAnagrams(in);
 }
