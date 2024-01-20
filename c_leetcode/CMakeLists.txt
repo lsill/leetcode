@@ -1,7 +1,14 @@
 cmake_minimum_required(VERSION 3.5)
 
-SET(CMAKE_C_COMPILER "/usr/bin/clang")
-SET(CMAKE_CXX_COMPILER "/usr/bin/clang++")
+if (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+    SET(CMAKE_C_COMPILER "/usr/bin/clang")
+    SET(CMAKE_CXX_COMPILER "/usr/bin/clang++")
+elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    set(CMAKE_C_COMPILER "gcc")
+    set(CMAKE_CXX_COMPILER "g++")
+endif ()
+
+
 
 SET(CMAKE_EXPORT_COMPILE_COMMANDS ON) # 生成compile_commands.json 查看编译单元所执行指令
 SET(BUILD_SHARED_LIBS ON)  # 没有指定生成什么库 默认静态
@@ -28,6 +35,9 @@ if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
 elseif (CMAKE_SYSTEM_NAME MATCHES "Linux")
     message(STATUS "Platform: Linux")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DOS_LINUX")
+elseif (CMAKE_SYSTEM_NAME MATCHES "Window")
+    message(STATUS "Platform: Linux")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DOS_WINDOW")
 endif()
 
 # -fPIC 生成位置无关的代码
