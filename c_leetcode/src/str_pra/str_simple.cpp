@@ -54,6 +54,23 @@ int StringSimple::maximumNumberOfStringPairsSelf(vector<std::string> &words) {
     return ans;
 }
 
+// lc比较优秀的解
+int StringSimple::maximumNumberOfStringPairs(vector<std::string> &words) {
+    int ans = 0;
+    bool seen[26][26]{};
+    for (auto &s : words) {
+        int x = s[0] - 'a';
+        int y = s[1] - 'a';
+        if (seen[y][x]) {
+            ans++; // s 和 seen中的y+x匹配
+        } else {
+            seen[x][y] = true;
+        }
+    }
+    return ans;
+}
+
+
 // 2788. 按分隔符拆分字符串
 //给你一个字符串数组 words 和一个字符 separator ，请你按 separator 拆分 words 中的每个字符串。
 //返回一个由拆分后的新字符串组成的字符串数组，不包括空字符串 。
@@ -86,21 +103,6 @@ int StringSimple::maximumNumberOfStringPairsSelf(vector<std::string> &words) {
 //words[i] 中的字符要么是小写英文字母，要么就是字符串 ".,|$#@" 中的字符（不包括引号）
 //separator 是字符串 ".,|$#@" 中的某个字符（不包括引号）
 
-// lc比较优秀的解
-int StringSimple::maximumNumberOfStringPairs(vector<std::string> &words) {
-    int ans = 0;
-    bool seen[26][26]{};
-    for (auto &s : words) {
-        int x = s[0] - 'a';
-        int y = s[1] - 'a';
-        if (seen[y][x]) {
-            ans++; // s 和 seen中的y+x匹配
-        } else {
-            seen[x][y] = true;
-        }
-    }
-    return ans;
-}
 
 // 自己做的
 vector<string> StringSimple::splitWordsBySeparatorSelf(vector<std::string> &words, char separator) {
