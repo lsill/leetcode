@@ -26,6 +26,8 @@ class StringSimple {
 public:
     int maximumNumberOfStringPairsSelf(vector<string>& words);
     int maximumNumberOfStringPairs(vector<string>& words);
+    vector<string> splitWordsBySeparatorSelf(vector<string>& words, char separator);
+    vector<string> splitWordsBySeparator(vector<string>& words, char separator);
 };
 
 class StringMid {
