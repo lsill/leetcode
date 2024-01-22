@@ -5,6 +5,7 @@
 #include <unordered_set>
 #include <unordered_map>
 #include <numeric>
+#include <string>
 
 // 128. 最长连续序列
 //给定一个未排序的整数数组 nums ，找出数字连续的最长序列（不要求序列元素在原数组中连续）的长度。
@@ -145,4 +146,38 @@ long long ArrayMid::minimumRemoval(std::vector<int> &beans) {
         ans = std::min(ans, s - 1ll * beans[i] * (n-i));
     }
     return ans;
+}
+
+// 670. 最大交换
+//给定一个非负整数，你至多可以交换一次数字中的任意两位。返回你能得到的最大值。
+//示例 1 :
+//输入: 2736
+//输出: 7236
+//解释: 交换数字2和数字7。
+//示例 2 :
+//输入: 9973
+//输出: 9973
+//解释: 不需要交换。
+//注意:
+//给定数字的范围是 [0, 108]
+
+// lc 一次遍历的解
+int ArrayMid::maximumSwap(int num) {
+    std::string s = std::to_string(num);
+    const int n = s.length();
+    int max_idx = n-1;
+    int p = -1, q;
+    for (int i = n-2; i >= 0;i--) {
+        if (s[i] > s[max_idx]) {
+            max_idx = i;
+        } else if (s[i] < s[max_idx]) {
+            p = i;
+            q = max_idx;
+        }
+    }
+    if (p == -1) {
+        return num;
+    }
+    std::swap(s[p], s[q]);
+    return std::stoi(s);
 }

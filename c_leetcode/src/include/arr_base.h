@@ -14,6 +14,7 @@ public:
     int longestConsecutiveSort(std::vector<int>& nums);
     int longestConsecutiveLikeDp(std::vector<int>& nums);
     long long minimumRemoval(std::vector<int>& beans);
+    int maximumSwap(int num);
 };
 
 #endif //LC_ARR_BASE_H

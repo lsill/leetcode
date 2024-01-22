@@ -9,6 +9,5 @@
 int main()
 {
     ArrayMid mid;
-    std::vector<int> v  = {4,1,6,5};
-    std::cout<<mid.minimumRemoval(v) <<std::endl;
+    std::cout<<mid.maximumSwap(2736) <<std::endl;
 }
