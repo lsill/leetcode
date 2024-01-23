@@ -8,6 +8,7 @@
 
 int main()
 {
-    ArrayMid mid;
-    std::cout<<mid.maximumSwap(2736) <<std::endl;
+    ArraySimple mid;
+    std::vector<int > a {14,30,29,49,3,23,44,21,26,52};
+    std::cout<<mid.alternatingSubarray(a) <<std::endl;
 }

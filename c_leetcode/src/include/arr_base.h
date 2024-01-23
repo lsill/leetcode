@@ -17,4 +17,11 @@ public:
     int maximumSwap(int num);
 };
 
+
+class ArraySimple {
+public:
+    int alternatingSubarraySelf(std::vector<int>& nums);
+    int alternatingSubarray(std::vector<int>& nums);
+};
+
 #endif //LC_ARR_BASE_H
