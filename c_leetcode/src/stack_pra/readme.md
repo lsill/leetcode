@@ -1,1 +1,2 @@
-[2696. 删除子串后的字符串最小长度](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/stack_pra/string_stack_md.cpp) 栈操作 值得看
+- [2696. 删除子串后的字符串最小长度](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/stack_pra/string_stack_md.cpp) 栈操作 值得看
+- [2865. 美丽塔 I](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/stack_pra/monotonic_stack.cpp?plain=1#L7) 单调栈的用法， 很巧妙，看懂都费劲，值得看的写法
