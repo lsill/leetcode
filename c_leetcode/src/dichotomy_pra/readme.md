@@ -1,0 +1,1 @@
+- [2861. 最大合金数](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/dichotomy_pra/dichotomy_mid.cpp?plain=1#L6) 中等题 二分查找

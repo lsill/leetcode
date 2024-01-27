@@ -5,7 +5,10 @@
 #ifndef LC_DP_BASE_H
 #define LC_DP_BASE_H
 #include <string>
-
+#ifdef  __linux__
+#include <cstring>
+#include <functional>
+#endif
 class DpHard {
 private:
     long long solve(std::string num, int m);
