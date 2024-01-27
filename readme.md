@@ -28,3 +28,7 @@ if you want to see the solutation,please visit www.leetcode.com
 
 ### 字符串集合
 [cpp_link](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/str_pra/readme.md)
+
+
+### 二分集合
+[cpp_link](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/dichotomy_pra/readme.md)
