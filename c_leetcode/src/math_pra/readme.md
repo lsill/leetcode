@@ -1,0 +1,3 @@
+- [2645. 构造有效字符串的最少插入数](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/math_pra/MathPra.cpp?plain=1#L42) 很不错的操作字符串题目
+- [365. 水壶问题](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/math_pra/math_mid.cpp?plain=1#L7) 裴蜀定理 （gcd 求最大公约数）
+- 

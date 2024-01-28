@@ -1,1 +1,0 @@
-[2645. 构造有效字符串的最少插入数](https://github.com/lsill/leetcode/blob/main/c_leetcode/math_pra/MathPra.cpp) 很不错的操作字符串题目
