@@ -5,6 +5,7 @@
 #ifndef LC_DP_BASE_H
 #define LC_DP_BASE_H
 #include <string>
+#include <vector>
 #ifdef  __linux__
 #include <cstring>
 #include <functional>
@@ -18,6 +19,7 @@ private:
 public:
     int countLc(std::string num1, std::string num2, int min_sum, int max_sum);
     int countBest(std::string num1, std::string num2, int min_sum, int max_sum);
+    int findRotateSteps(std::string ring, std::string key);
 };
 
 #endif //LC_DP_BASE_H
