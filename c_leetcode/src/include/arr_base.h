@@ -6,6 +6,7 @@
 #define LC_ARR_BASE_H
 
 #include <vector>
+#include <unordered_map>
 
 class ArrayMid {
 public:
@@ -15,6 +16,7 @@ public:
     int longestConsecutiveLikeDp(std::vector<int>& nums);
     long long minimumRemoval(std::vector<int>& beans);
     int maximumSwap(int num);
+    int minimumSeconds(std::vector<int>& nums);
 };
 
 
