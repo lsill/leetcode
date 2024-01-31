@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <unordered_map>
+#include <unordered_set>
 
 class ArrayMid {
 public:
@@ -24,6 +25,8 @@ class ArraySimple {
 public:
     int alternatingSubarraySelf(std::vector<int>& nums);
     int alternatingSubarray(std::vector<int>& nums);
+    std::vector<int> distinctDifferenceArraySelf(std::vector<int>& nums);
+    std::vector<int> distinctDifferenceArray(std::vector<int>& nums);
 };
 
 #endif //LC_ARR_BASE_H

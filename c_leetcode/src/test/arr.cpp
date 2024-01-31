@@ -9,6 +9,6 @@
 int main()
 {
     ArraySimple mid;
-    std::vector<int > a {14,30,29,49,3,23,44,21,26,52};
-    std::cout<<mid.alternatingSubarray(a) <<std::endl;
+    std::vector<int > a {1,2,3,4,5};
+    mid.distinctDifferenceArray(a);
 }
