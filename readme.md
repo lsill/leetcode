@@ -35,3 +35,6 @@ if you want to see the solutation,please visit www.leetcode.com
 
 ### 数学集合
 [cpp_link](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/math_pra/readme.md)
+
+### 中位数集合
+[cpp_link](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/mid_pra/readme.md)

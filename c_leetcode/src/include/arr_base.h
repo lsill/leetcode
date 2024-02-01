@@ -28,5 +28,4 @@ public:
     std::vector<int> distinctDifferenceArraySelf(std::vector<int>& nums);
     std::vector<int> distinctDifferenceArray(std::vector<int>& nums);
 };
-
 #endif //LC_ARR_BASE_H

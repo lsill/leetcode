@@ -1,0 +1,1 @@
+- [LCP 24. 数字游戏](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/mid_pra/mid_hard.cpp?plain=1#L6) 典型力扣困难题，中位数+贪心+顶堆
