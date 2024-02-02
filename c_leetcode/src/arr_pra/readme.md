@@ -5,3 +5,4 @@
 - [2765. 最长交替子数组](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/arr_pra/arr_simple.cpp?plain=1#L6) 虽然是简单题，但题解很巧妙，可以看
 - [2808. 使循环数组所有元素相等的最少秒数](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/arr_pra/arr_mid.cpp?plain=1#L185)  需要思考做法的题，锻炼脑子
 - [2670. 找出不同元素数目差数组](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/arr_pra/arr_simple.cpp?plain=1#L69) 简单题 用了集合
+- [1686. 石子游戏 VI](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/arr_pra/arr_mid.cpp?plain=1#L233) 中等题，力扣题解写的很妙啊，看！

@@ -8,6 +8,7 @@
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
+#include <numeric>
 
 class ArrayMid {
 public:
@@ -18,6 +19,8 @@ public:
     long long minimumRemoval(std::vector<int>& beans);
     int maximumSwap(int num);
     int minimumSeconds(std::vector<int>& nums);
+    int stoneGameVI(std::vector<int>& aliceValues, std::vector<int>& bobValues);
+    int stoneGameVISelf(std::vector<int>& aliceValues, std::vector<int>& bobValues);
 };
 
 

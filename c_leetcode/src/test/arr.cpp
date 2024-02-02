@@ -6,9 +6,12 @@
 #include <vector>
 #include <iostream>
 
+using namespace std;
+
 int main()
 {
-    ArraySimple mid;
-    std::vector<int > a {1,2,3,4,5};
-    mid.distinctDifferenceArray(a);
+    ArrayMid mid;
+    vector<int> alice {2,4,3};
+    vector<int> bob {1,6,7};
+    cout << mid.stoneGameVI(alice, bob) << endl;
 }
