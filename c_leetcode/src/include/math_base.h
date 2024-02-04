@@ -22,4 +22,9 @@ public:
     bool canMeasureWater(int jug1Capacity, int jug2Capacity, int targetCapacity);
 };
 
+class MathSimple {
+public:
+    bool canWinNim(int n);
+};
+
 #endif //NEW_C_STUDY_MATHPRA_H
