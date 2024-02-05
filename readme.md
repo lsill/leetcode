@@ -38,3 +38,6 @@ if you want to see the solutation,please visit www.leetcode.com
 
 ### 中位数集合
 [cpp_link](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/mid_pra/readme.md)
+
+### 队列集合
+[cpp_link](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/deque_pra/readme.md)

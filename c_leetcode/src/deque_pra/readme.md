@@ -1,0 +1,1 @@
+- [1696. 跳跃游戏 VI](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/deque_pra/deque_mid.cpp?plain=1#L8) 单调队列 逐渐优化起来的值得看
