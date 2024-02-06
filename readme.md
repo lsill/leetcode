@@ -41,3 +41,9 @@ if you want to see the solutation,please visit www.leetcode.com
 
 ### 队列集合
 [cpp_link](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/deque_pra/readme.md)
+
+### 贪心集合
+[cpp_link](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/greedy_pra/readme.md)
+
+### 堆集合
+[cpp_link](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/heap_pra/readme.md)
