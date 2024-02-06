@@ -11,7 +11,6 @@ using namespace std;
 int main()
 {
     ArrayMid mid;
-    vector<int> alice {2,4,3};
-    vector<int> bob {1,6,7};
-    cout << mid.stoneGameVI(alice, bob) << endl;
+    vector<int> alice {-200,-300,400,9};
+    cout << mid.magicTower(alice) << endl;
 }

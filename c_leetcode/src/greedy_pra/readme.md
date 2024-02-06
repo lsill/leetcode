@@ -1,0 +1,1 @@
+- [LCP 30. 魔塔游戏](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/greedy_pra/greedy_mid.cpp?plain=1#L8) 贪心最大堆做法，典型题，看！！
