@@ -20,6 +20,8 @@ class TreeSimple {
 public:
     std::vector<int> inorderTraversal(TreeNode* root);
     std::vector<int> inorderTraversal_iter(TreeNode* root);
+    std::vector<int> postorderTraversal(TreeNode* root);
+    std::vector<int> preorderTraversal(TreeNode *root);
 private:
     void inorderTraversal_dfs(std::vector<int>& ans, TreeNode* node);
 };
