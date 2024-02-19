@@ -26,4 +26,27 @@ private:
     void inorderTraversal_dfs(std::vector<int>& ans, TreeNode* node);
 };
 
+class Node {
+public:
+    int val;
+    std::vector<Node*> children;
+
+    Node() {}
+
+    Node(int _val) {
+        val = _val;
+    }
+
+    Node(int _val, std::vector<Node*> _children) {
+        val = _val;
+        children = _children;
+    }
+};
+
+class NodeSimple{
+public:
+    std::vector<int> postorder(Node* root);
+    std::vector<int> postorderIter(Node* root);
+};
+
 #endif //LC_TREE_BASE_H

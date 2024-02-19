@@ -1,3 +1,4 @@
 - [94. 二叉树的中序遍历](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/binary_pra/tree_simple?plain=1#L8) 用了栈迭代算法，可以一看
 - [144. 二叉树的前序遍历](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/binary_pra/tree_simple?plain=1#L00) 用了栈迭代算法，可以一看
 - [145. 二叉树的后序遍历](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/binary_pra/tree_simple?plain=1#L58) 用了栈迭代算法，可以一看
+- [590. N 叉树的后序遍历](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/binary_pra/node_simple?plain=1#L8) N叉树遍历
