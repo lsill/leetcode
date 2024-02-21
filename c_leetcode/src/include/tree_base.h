@@ -49,4 +49,9 @@ public:
     std::vector<int> postorderIter(Node* root);
 };
 
+class TreeMid {
+public:
+    TreeNode* buildTree(std::vector<int>& inorder, std::vector<int>& postorder);
+};
+
 #endif //LC_TREE_BASE_H
