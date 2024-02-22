@@ -320,3 +320,53 @@ int ArrayMid::stoneGameVISelf(std::vector<int> &aliceValues, std::vector<int> &b
     }
     return ans;
 }
+
+// 560. 和为 K 的子数组
+//给你一个整数数组 nums 和一个整数 k ，请你统计并返回 该数组中和为 k 的子数组的个数 。
+//子数组是数组中元素的连续非空序列。
+//示例 1：
+//输入：nums = [1,1,1], k = 2
+//输出：2
+//示例 2：
+//输入：nums = [1,2,3], k = 3
+//输出：2
+//提示：
+//1 <= nums.length <= 2 * 104
+//-1000 <= nums[i] <= 1000
+//-107 <= k <= 107
+
+// 力扣 前缀和加哈希表优化
+int ArrayMid::subarraySum(std::vector<int> &nums, int k) {
+    std::unordered_map<int, int> mp;
+    mp[0] = 1;
+    int count = 0, pre = 0;
+    for (auto& x : nums) {
+        pre += x;
+        if (mp.find(pre - k) != mp.end()) {
+            count += mp[pre - k];
+        }
+        mp[pre]++;
+    }
+    return count;
+}
+
+// 自己做的暴力解
+int ArrayMid::subarraySumSelf(std::vector<int> &nums, int k) {
+    int ans = 0;
+    int n = nums.size();
+    int l = 0;
+    while (l < n) {
+        int tmp = nums[l];
+        if (tmp == k) {
+            ans++;
+        }
+        for (int i = l+1; i < n;i++) {
+            tmp += nums[i];
+            if (tmp == k) {
+                ans++;
+            }
+        }
+        l++;
+    }
+    return ans;
+}

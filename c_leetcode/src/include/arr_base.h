@@ -21,6 +21,8 @@ public:
     int minimumSeconds(std::vector<int>& nums);
     int stoneGameVI(std::vector<int>& aliceValues, std::vector<int>& bobValues);
     int stoneGameVISelf(std::vector<int>& aliceValues, std::vector<int>& bobValues);
+    int subarraySumSelf(std::vector<int>& nums, int k);
+    int subarraySum(std::vector<int>& nums, int k);
 };
 
 
