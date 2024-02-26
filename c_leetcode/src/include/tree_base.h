@@ -22,6 +22,10 @@ public:
     std::vector<int> inorderTraversal_iter(TreeNode* root);
     std::vector<int> postorderTraversal(TreeNode* root);
     std::vector<int> preorderTraversal(TreeNode *root);
+
+    int rangeSumBSTSelf(TreeNode* root, int low, int high);
+    int rangeSumBST(TreeNode* root, int low, int high);
+    int rangeSumBSTBFS(TreeNode* root, int low, int high);
 private:
     void inorderTraversal_dfs(std::vector<int>& ans, TreeNode* node);
 };
