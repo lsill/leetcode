@@ -1,0 +1,2 @@
+- [232. 用栈实现队列](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/simulation_pra/simulation_simple.cpp?plain=1#L7) 简单两个栈实现一个队列
+- 
