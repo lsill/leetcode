@@ -28,6 +28,8 @@ public:
     int maximumNumberOfStringPairs(vector<string>& words);
     vector<string> splitWordsBySeparatorSelf(vector<string>& words, char separator);
     vector<string> splitWordsBySeparator(vector<string>& words, char separator);
+    string maximumOddBinaryNumberSelf(string s);
+    string maximumOddBinaryNumber(string s);
 };
 
 class StringMid {
