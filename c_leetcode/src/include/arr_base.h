@@ -23,6 +23,7 @@ public:
     int stoneGameVISelf(std::vector<int>& aliceValues, std::vector<int>& bobValues);
     int subarraySumSelf(std::vector<int>& nums, int k);
     int subarraySum(std::vector<int>& nums, int k);
+    long long maxArrayValue(std::vector<int>& nums);
 };
 
 

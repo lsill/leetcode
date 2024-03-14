@@ -11,6 +11,6 @@ using namespace std;
 int main()
 {
     ArrayMid mid;
-    vector<int> alice {-200,-300,400,9};
-    cout << mid.magicTower(alice) << endl;
+    vector<int> alice {5,3,3};
+    cout << mid.maxArrayValue(alice) << endl;
 }
