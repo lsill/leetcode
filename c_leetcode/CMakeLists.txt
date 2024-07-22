@@ -77,4 +77,6 @@ add_subdirectory(src/deque_pra)
 add_subdirectory(src/greedy_pra)
 add_subdirectory(src/tree_pra)
 add_subdirectory(src/simulation_pra)
+add_subdirectory(src/floyd_pra)
 add_subdirectory(src/test)
+
