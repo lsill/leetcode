@@ -3,9 +3,11 @@
 //
 #include "dp_base.h"
 #include <iostream>
+using namespace std;
 
 int main(){
     DpHard* dp = new DpHard;
-    std::cout<< dp->countLc("1", "12", 1,8) << std::endl;
+    vector<int> arr {1,2,3,4};
+    std::cout<< dp->sumOfPowers(arr, 3) << std::endl;
     delete dp;
 }

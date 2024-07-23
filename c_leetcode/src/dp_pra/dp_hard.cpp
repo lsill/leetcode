@@ -168,3 +168,83 @@ int DpHard::findRotateSteps(std::string ring, std::string key) {
     }
     return *min_element(dp[m - 1].begin(), dp[m - 1].end());
 }
+
+// 3098. 求出所有子序列的能量和
+// 给你一个长度为 n 的整数数组 nums 和一个 正 整数 k 。一个子序列的能量定义为子序列中
+// 任意 两个元素的差值绝对值的 最小值 。请你返回 nums 中长度 等于 k 的 所有 子序列的
+// 能量和 。由于答案可能会很大，将答案对 109 + 7 取余 后返回。
+// 示例 1：
+// 输入：nums = [1,2,3,4], k = 3
+// 输出：4
+// 解释：
+// nums 中总共有 4 个长度为 3 的子序列：[1,2,3] ，[1,3,4] ，[1,2,4] 和 [2,3,4] 。
+// 能量和为 |2 - 3| + |3 - 4| + |2 - 1| + |3 - 4| = 4 。
+// 示例 2：
+// 输入：nums = [2,2], k = 2
+// 输出：0
+// 解释：
+// nums 中唯一一个长度为 2 的子序列是 [2,2] 。能量和为 |2 - 2| = 0 。
+// 示例 3：
+// 输入：nums = [4,3,-1], k = 2
+// 输出：10
+// 解释：
+// nums 总共有 3 个长度为 2 的子序列：[4,3] ，[4,-1] 和 [3,-1] 。能量和为 |4 - 3| + |4 - (-1)| + |3 - (-1)| = 10 。
+// 提示：
+// 2 <= n == nums.length <= 50
+// -108 <= nums[i] <= 108
+// 2 <= k <= n
+// lc 困难题，直接抄的看不懂
+int DpHard::sumOfPowers(std::vector<int> &nums, int k) {
+        int n = nums.size();
+        sort(nums.begin(), nums.end());
+        std::vector<int> vals;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < i; j++) {
+                vals.push_back(nums[i] - nums[j]);
+            }
+        }
+        vals.push_back(inf);
+        sort(vals.begin(), vals.end());
+        vals.erase(unique(vals.begin(), vals.end()), vals.end());
+
+        vector<vector<vector<int>>> d(n, vector(k + 1, vector(vals.size(), 0)));
+        vector<vector<int>> border(n, vector(k + 1, 0));
+        vector<vector<int>> sum(k + 1, vector(vals.size(), 0));
+        vector<vector<int>> suf(n, vector(k + 1, 0));
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < i; j++) {
+                int pos = lower_bound(vals.begin(), vals.end(), nums[i] - nums[j]) - vals.begin();
+                for (int p = 1; p <= k; p++) {
+                    while (border[j][p] < pos) {
+                        sum[p][border[j][p]] = (sum[p][border[j][p]] - suf[j][p] + mod) % mod;
+                        sum[p][border[j][p]] = (sum[p][border[j][p]] + d[j][p][border[j][p]]) % mod;
+                        suf[j][p] = (suf[j][p] - d[j][p][border[j][p]] + mod) % mod;
+                        border[j][p]++;
+                        sum[p][border[j][p]] = (sum[p][border[j][p]] + suf[j][p]);
+                    }
+                }
+            }
+
+            d[i][1][vals.size() - 1] = 1;
+            for (int p = 2; p <= k; p++) {
+                for (int v = 0; v < vals.size(); v++) {
+                    d[i][p][v] = sum[p - 1][v];
+                }
+            }
+            for (int p = 1; p <= k; p++) {
+                for (int v = 0; v < vals.size(); v++) {
+                    suf[i][p] = (suf[i][p] + d[i][p][v]) % mod;
+                }
+                sum[p][0] = (sum[p][0] + suf[i][p]) % mod;
+            }
+        }
+
+        int res = 0;
+        for (int i = 0; i < n; i++) {
+            for (int v = 0; v < vals.size(); v++) {
+                res = (res + 1ll * vals[v] * d[i][k][v] % mod) % mod;
+            }
+        }
+        return res;
+}
