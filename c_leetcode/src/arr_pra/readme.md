@@ -8,3 +8,4 @@
 - [1686. 石子游戏 VI](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/arr_pra/arr_mid.cpp?plain=1#L233) 中等题，力扣题解写的很妙啊，看！
 - [560. 和为 K 的子数组](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/arr_pra/arr_mid.cpp?plain=1#L324)  力扣热题，前缀和应用，看！
 - [2789. 合并后数组中的最大元素](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/arr_pra/arr_mid.cpp?plain=1#L373) 想到思路了，但没写出来，可以看下
+- [2766. 重新放置石块](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/arr_pra/arr_mid.cpp?plain=1#L406) 不知道为啥用hashtable不行

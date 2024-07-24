@@ -11,6 +11,8 @@ using namespace std;
 int main()
 {
     ArrayMid mid;
-    vector<int> alice {5,3,3};
-    cout << mid.maxArrayValue(alice) << endl;
+    vector<int> nums {5,3,3};
+    vector<int> from {5,3,3};
+    vector<int> to {5,3,3};
+    //mid.relocateMarbles(alice) ;
 }
