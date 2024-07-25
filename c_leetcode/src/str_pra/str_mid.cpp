@@ -49,3 +49,35 @@ vector<vector<string>> StringMid::groupAnagrams(vector<std::string> &strs) {
     }
     return ans;
 }
+
+// 2844. 生成特殊数字的最少操作
+// 给你一个下标从0开始的字符串 num，表示一个非负整数。
+// 在一次操作中，您可以选择 num 的任意一位数字并将其删除。请注意，
+// 如果你删除 num 中的所有数字，则 num 变为0。返回最少需要多少次操作可以使 num变成特殊数字。
+// 如果整数 x 能被25整除，则该整数 x被认为是特殊数字。
+// 示例1：输入：num="2245047"输出：2解释：删除数字 num[5] 和 num[6] ，得到数字
+// "22450"，可以被25整除。可以证明要使数字变成特殊数字，最少需要删除2位数字。
+// 示例2：输入：num="2908305"输出：3解释：删除 num[3]、 num[4] 和 num[6] ，得到数字
+// "2900"，可以被25整除。可以证明要使数字变成特殊数字，最少需要删除3位数字。
+// 示例3：输入：num="10"输出：1解释：删除 num[0] ，得到数字"0"，可以被
+// 25整除。可以证明要使数字变成特殊数字，最少需要删除1位数字。
+// 提示1 <=num.length<=100 num 仅由数字'0'到'9'组成num 不含任何前导零
+
+// lc优秀解（要考虑到个位为'0'和个位为'5'的情况）
+int StringMid::minimumOperations(string num) {
+    int n = num.length();
+    bool found0 = false, found5 = false;
+    for (int i = n - 1; i >= 0; i--) {
+        char c = num[i];
+        if (found0 && (c == '0' || c == '5') ||
+            found5 && (c == '2' || c == '7')) {
+            return n - i - 2;
+            }
+        if (c == '0') {
+            found0 = true;
+        } else if (c == '5') {
+            found5 = true;
+        }
+    }
+    return n - found0;
+}

@@ -35,6 +35,7 @@ public:
 class StringMid {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs);
+    int minimumOperations(string num);
 };
 
 #endif //NEW_C_STUDY_STRTEST_H

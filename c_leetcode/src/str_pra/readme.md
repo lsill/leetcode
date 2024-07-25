@@ -5,3 +5,4 @@
 数组hash成key 来计算
 - [2788. 按分隔符拆分字符串](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/str_pra/str_simple.cpp?plain=1#L73) 用了流处理简单题可以简单看下
 - [2864. 最大二进制奇数](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/str_pra/str_simple.cpp?plain=1#L145) 不用看
+- [2844. 生成特殊数字的最少操作](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/str_pra/str_mid.cpp?plain=1#L53) 可以看看
