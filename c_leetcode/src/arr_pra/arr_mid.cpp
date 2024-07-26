@@ -440,6 +440,46 @@ std::vector<int> ArrayMid::relocateMarbles(std::vector<int> &nums, std::vector<i
         st.insert(moveTo[i]);
     }
      std::vector<int> ans(st.begin(), st.end());
-     ranges::sort(ans);
+     std::ranges::sort(ans);
      return ans;
+}
+
+
+// 2740. 找出分区值
+// 给你一个 正 整数数组nums 。将 nums 分成两个数组：nums1 和 nums2，并满足下述条件：
+// 数组 nums 中的每个元素都属于数组 nums1 或数组nums2 。两个数组都 非空 。分区值 最小 。
+// 分区值的计算方法是|max (nums1)-min (nums2)| 。
+// 其中，max (nums1) 表示数组 nums1 中的最大元素，min(nums2) 表示数组 nums2 中的最小元素。
+// 返回表示分区值的整数。
+// 示例1：输入：nums=[1,3,2,4]
+// 输出：1
+// 解释：可以将数组 nums 分成 nums1 = [1,2]和 nums2 = [3,4] 。- 数组 nums1 的最大值等于2 。-数组 nums2 的最小值等于3 。
+// 分区值等于|2-3|=1 。可以证明1是所有分区方案的最小值。
+//示例2：
+// 输入：nums=[100,1,10]
+// 输出：9
+// 解释：可以将数组 nums 分成 nums1 = [10]和 nums2 = [100,1] 。- 数组 nums1 的最大值等于10 。-
+// 数组 nums2 的最小值等于1 。分区值等于|10-1|=9 。可以证明9是所有分区方案的最小值。
+// 提示：2<=nums.length<=10^5,1<=nums [i]<=10^9
+// 自己写的
+int ArrayMid::findValueOfPartition(std::vector<int> &nums) {
+    std::sort(nums.begin(), nums.end());
+    int min = INT32_MAX;
+    const int n = nums.size()-1;
+    for (int i = 0; i < n;i++) {
+        int tmp = nums[i+1] - nums[i];
+        if (min < tmp) {
+            min = tmp;
+        }
+    }
+    return min;
+    // 比较好的写法
+    /*sort(nums.begin(),nums.end());
+    int n=nums.size();
+    int result=INT_MAX;
+    for(int i=1;i<n;i++){
+        result=min(result,nums[i]-nums[i-1]);
+    }
+
+    return result;*/
 }

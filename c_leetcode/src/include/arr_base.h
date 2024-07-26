@@ -25,6 +25,7 @@ public:
     int subarraySum(std::vector<int>& nums, int k);
     long long maxArrayValue(std::vector<int>& nums);
     std::vector<int> relocateMarbles(std::vector<int>& nums, std::vector<int>& moveFrom, std::vector<int>& moveTo);
+    int findValueOfPartition(std::vector<int>& nums);
 };
 
 
