@@ -35,5 +35,6 @@ public:
     int alternatingSubarray(std::vector<int>& nums);
     std::vector<int> distinctDifferenceArraySelf(std::vector<int>& nums);
     std::vector<int> distinctDifferenceArray(std::vector<int>& nums);
+    int calPoints(std::vector<std::string>& operations);
 };
 #endif //LC_ARR_BASE_H

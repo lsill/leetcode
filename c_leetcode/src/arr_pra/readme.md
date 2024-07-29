@@ -10,3 +10,4 @@
 - [2789. 合并后数组中的最大元素](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/arr_pra/arr_mid.cpp?plain=1#L373) 想到思路了，但没写出来，可以看下
 - [2766. 重新放置石块](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/arr_pra/arr_mid.cpp?plain=1#L406) 不知道为啥用hashtable不行
 - [// 2740. 找出分区值](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/arr_pra/arr_mid.cpp?plain=1#L448) 做起来是简单题，没看的必要
+- [682. 棒球比赛](https://github.com/lsill/leetcode/blob/main/c_leetcode/src/arr_pra/arr_simple.cpp?plain=1#L137) 过于简单，没看的必要
